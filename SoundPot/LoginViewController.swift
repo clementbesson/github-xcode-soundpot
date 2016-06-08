@@ -11,8 +11,8 @@ import Parse
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     // MARK: Properties
+    
     @IBOutlet weak var usernameTextField: UITextField!
-    //var username = ""
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
