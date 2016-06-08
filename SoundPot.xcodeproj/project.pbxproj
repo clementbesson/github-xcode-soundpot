@@ -14,6 +14,21 @@
 		EBD3BEDC1D0750D1002A4045 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBD3BEDB1D0750D1002A4045 /* Images.xcassets */; };
 		EBD3BEDF1D0750D1002A4045 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD3BEDD1D0750D1002A4045 /* LaunchScreen.xib */; };
 		EBD3BEEB1D0750D1002A4045 /* SoundPotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BEEA1D0750D1002A4045 /* SoundPotTests.swift */; };
+		EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BEF41D075623002A4045 /* LoginViewController.swift */; };
+		EBD3BEF71D076D81002A4045 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BEF61D076D81002A4045 /* User.swift */; };
+		EBD3BEF81D076D81002A4045 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BEF61D076D81002A4045 /* User.swift */; };
+		EBD3BEFC1D078168002A4045 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BEFB1D078168002A4045 /* AudioToolbox.framework */; };
+		EBD3BEFE1D078174002A4045 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BEFD1D078174002A4045 /* MediaPlayer.framework */; };
+		EBD3BF011D078302002A4045 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF001D078302002A4045 /* CFNetwork.framework */; };
+		EBD3BF031D078308002A4045 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF021D078308002A4045 /* CoreGraphics.framework */; };
+		EBD3BF051D078316002A4045 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF041D078316002A4045 /* CoreLocation.framework */; };
+		EBD3BF071D078325002A4045 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF061D078325002A4045 /* libz.dylib */; };
+		EBD3BF091D078331002A4045 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF081D078331002A4045 /* MobileCoreServices.framework */; };
+		EBD3BF0B1D078339002A4045 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF0A1D078339002A4045 /* QuartzCore.framework */; };
+		EBD3BF0D1D07833F002A4045 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF0C1D07833F002A4045 /* Security.framework */; };
+		EBD3BF0F1D078348002A4045 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF0E1D078348002A4045 /* StoreKit.framework */; };
+		EBD3BF111D07836F002A4045 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF101D07836F002A4045 /* SystemConfiguration.framework */; };
+		EBD3BF131D078381002A4045 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF121D078381002A4045 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +53,20 @@
 		EBD3BEE41D0750D1002A4045 /* SoundPotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundPotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD3BEE91D0750D1002A4045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD3BEEA1D0750D1002A4045 /* SoundPotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPotTests.swift; sourceTree = "<group>"; };
+		EBD3BEF41D075623002A4045 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EBD3BEF61D076D81002A4045 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EBD3BEFB1D078168002A4045 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EBD3BEFD1D078174002A4045 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		EBD3BF001D078302002A4045 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EBD3BF021D078308002A4045 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EBD3BF041D078316002A4045 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EBD3BF061D078325002A4045 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EBD3BF081D078331002A4045 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EBD3BF0A1D078339002A4045 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EBD3BF0C1D07833F002A4045 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EBD3BF0E1D078348002A4045 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		EBD3BF101D07836F002A4045 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EBD3BF121D078381002A4045 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +74,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD3BF131D078381002A4045 /* libsqlite3.dylib in Frameworks */,
+				EBD3BF111D07836F002A4045 /* SystemConfiguration.framework in Frameworks */,
+				EBD3BF0F1D078348002A4045 /* StoreKit.framework in Frameworks */,
+				EBD3BF0D1D07833F002A4045 /* Security.framework in Frameworks */,
+				EBD3BF0B1D078339002A4045 /* QuartzCore.framework in Frameworks */,
+				EBD3BF091D078331002A4045 /* MobileCoreServices.framework in Frameworks */,
+				EBD3BF071D078325002A4045 /* libz.dylib in Frameworks */,
+				EBD3BF051D078316002A4045 /* CoreLocation.framework in Frameworks */,
+				EBD3BF031D078308002A4045 /* CoreGraphics.framework in Frameworks */,
+				EBD3BF011D078302002A4045 /* CFNetwork.framework in Frameworks */,
+				EBD3BEFE1D078174002A4045 /* MediaPlayer.framework in Frameworks */,
+				EBD3BEFC1D078168002A4045 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +102,7 @@
 		EBD3BEC31D0750D1002A4045 = {
 			isa = PBXGroup;
 			children = (
+				EBD3BEFF1D07818A002A4045 /* Frameworks */,
 				EBD3BECE1D0750D1002A4045 /* SoundPot */,
 				EBD3BEE71D0750D1002A4045 /* SoundPotTests */,
 				EBD3BECD1D0750D1002A4045 /* Products */,
@@ -81,7 +123,9 @@
 			children = (
 				EBD3BED11D0750D1002A4045 /* AppDelegate.swift */,
 				EBD3BED61D0750D1002A4045 /* ViewController.swift */,
+				EBD3BEF41D075623002A4045 /* LoginViewController.swift */,
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
+				EBD3BEF61D076D81002A4045 /* User.swift */,
 				EBD3BEDB1D0750D1002A4045 /* Images.xcassets */,
 				EBD3BEDD1D0750D1002A4045 /* LaunchScreen.xib */,
 				EBD3BED31D0750D1002A4045 /* SoundPot.xcdatamodeld */,
@@ -113,6 +157,25 @@
 				EBD3BEE91D0750D1002A4045 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBD3BEFF1D07818A002A4045 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBD3BF121D078381002A4045 /* libsqlite3.dylib */,
+				EBD3BF101D07836F002A4045 /* SystemConfiguration.framework */,
+				EBD3BF0E1D078348002A4045 /* StoreKit.framework */,
+				EBD3BF0C1D07833F002A4045 /* Security.framework */,
+				EBD3BF0A1D078339002A4045 /* QuartzCore.framework */,
+				EBD3BF081D078331002A4045 /* MobileCoreServices.framework */,
+				EBD3BF061D078325002A4045 /* libz.dylib */,
+				EBD3BF041D078316002A4045 /* CoreLocation.framework */,
+				EBD3BF021D078308002A4045 /* CoreGraphics.framework */,
+				EBD3BF001D078302002A4045 /* CFNetwork.framework */,
+				EBD3BEFB1D078168002A4045 /* AudioToolbox.framework */,
+				EBD3BEFD1D078174002A4045 /* MediaPlayer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +222,8 @@
 		EBD3BEC41D0750D1002A4045 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Clement Besson";
 				TargetAttributes = {
@@ -215,8 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
 				EBD3BED71D0750D1002A4045 /* ViewController.swift in Sources */,
 				EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */,
+				EBD3BEF71D076D81002A4045 /* User.swift in Sources */,
 				EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD3BEF81D076D81002A4045 /* User.swift in Sources */,
 				EBD3BEEB1D0750D1002A4045 /* SoundPotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,9 +412,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Clement/Desktop/parse-library-1.12.0",
+				);
 				INFOPLIST_FILE = SoundPot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -354,9 +429,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Clement/Desktop/parse-library-1.12.0",
+				);
 				INFOPLIST_FILE = SoundPot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -364,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -375,6 +457,8 @@
 				INFOPLIST_FILE = SoundPotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoundPot.app/SoundPot";
 			};
 			name = Debug;
@@ -383,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -390,6 +475,7 @@
 				INFOPLIST_FILE = SoundPotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoundPot.app/SoundPot";
 			};
 			name = Release;
@@ -413,6 +499,7 @@
 				EBD3BEF01D0750D1002A4045 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EBD3BEF11D0750D1002A4045 /* Build configuration list for PBXNativeTarget "SoundPotTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +508,7 @@
 				EBD3BEF31D0750D1002A4045 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -21,16 +21,11 @@ class SoundPotTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
+    // MARK SoundPor Tests
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testUserInitialization (){
+        // Success case.
+        let potentialUser = User(username: "Clem", password: "")
+        XCTAssertNotNil(potentialUser)
     }
-    
 }
