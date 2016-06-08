@@ -34,6 +34,9 @@
 		EBEBD82E1D07C57D002EB597 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD82D1D07C57D002EB597 /* Song.swift */; };
 		EBEBD82F1D07C57D002EB597 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD82D1D07C57D002EB597 /* Song.swift */; };
 		EBEBD8311D07D5A1002EB597 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8301D07D5A1002EB597 /* InboxViewController.swift */; };
+		EBEBD8331D086AA7002EB597 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */; };
+		EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8341D088BC4002EB597 /* SongViewController.swift */; };
+		EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8361D089204002EB597 /* HistoryViewControler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		EBEBD8281D07B8B5002EB597 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EBEBD82D1D07C57D002EB597 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = ../Song.swift; sourceTree = "<group>"; };
 		EBEBD8301D07D5A1002EB597 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
+		EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		EBEBD8341D088BC4002EB597 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
+		EBEBD8361D089204002EB597 /* HistoryViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewControler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +141,11 @@
 				EBD3BED11D0750D1002A4045 /* AppDelegate.swift */,
 				EBEBD8281D07B8B5002EB597 /* HomeViewController.swift */,
 				EBEBD8301D07D5A1002EB597 /* InboxViewController.swift */,
+				EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */,
 				EBD3BEF41D075623002A4045 /* LoginViewController.swift */,
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
+				EBEBD8361D089204002EB597 /* HistoryViewControler.swift */,
+				EBEBD8341D088BC4002EB597 /* SongViewController.swift */,
 				EBD3BEF61D076D81002A4045 /* User.swift */,
 				EBEBD82D1D07C57D002EB597 /* Song.swift */,
 				EBD3BEDB1D0750D1002A4045 /* Images.xcassets */,
@@ -296,11 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEBD8331D086AA7002EB597 /* PlaylistViewController.swift in Sources */,
 				EBEBD82E1D07C57D002EB597 /* Song.swift in Sources */,
 				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
 				EBEBD8311D07D5A1002EB597 /* InboxViewController.swift in Sources */,
 				EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */,
 				EBD3BEF71D076D81002A4045 /* User.swift in Sources */,
+				EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */,
+				EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */,
 				EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */,
 				EBEBD8291D07B8B5002EB597 /* HomeViewController.swift in Sources */,
 			);

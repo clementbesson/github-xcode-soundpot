@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Eq-Sb-mgf">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -63,11 +62,11 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Inbox"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="95" y="509" width="38" height="30"/>
+                                    <rect key="frame" x="71" y="565" width="38" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="inboxButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="SaZ-9z-jlU"/>
-                                    <segue destination="1AG-3V-FLa" kind="presentation" id="MUw-8A-Ifb"/>
+                                    <segue destination="1AG-3V-FLa" kind="presentation" id="EeL-dP-3SM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQT-ef-mjd">
@@ -82,16 +81,29 @@
                                     <rect key="frame" x="132" y="480" width="13" height="21"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft3-uW-iUO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="History"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="242" y="565" width="50" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="historyButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="zu1-dM-IfP"/>
+                                    <segue destination="4sD-Ee-dPt" kind="presentation" identifier="homeToHistory" id="DE9-1A-Sbe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Uga-Kw-4Mg"/>
+                                <exclude reference="Ft3-uW-iUO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Uga-Kw-4Mg"/>
+                                <include reference="Ft3-uW-iUO"/>
                             </mask>
                         </variation>
                     </view>
@@ -108,6 +120,57 @@
             </objects>
             <point key="canvasLocation" x="349.5" y="-470.25"/>
         </scene>
+        <!--History-->
+        <scene sceneID="slB-pj-cxr">
+            <objects>
+                <tableViewController id="9xb-NX-yk1" customClass="HistoryViewControler" customModule="SoundPot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="W4i-7B-8tP">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wp7-dF-yk4">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wp7-dF-yk4" id="Acl-G3-mcE">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9xb-NX-yk1" id="uc0-eQ-PSC"/>
+                            <outlet property="delegate" destination="9xb-NX-yk1" id="uPe-Do-SoI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="Enc-kx-H4K">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="vO3-6a-CCW">
+                            <connections>
+                                <segue destination="3Eq-Sb-mgf" kind="presentation" id="wcx-FK-oWu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="XzP-Zg-HFx" kind="show" identifier="historyToFriend" id="v3u-Ld-Gu9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dOj-JF-WyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="-470.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YVS-ru-MHh">
+            <objects>
+                <navigationController id="4sD-Ee-dPt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JfI-vq-CCK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9xb-NX-yk1" kind="relationship" relationship="rootViewController" id="blZ-M8-cjb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hn5-Mf-cNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125" y="-470.25"/>
+        </scene>
         <!--Inbox-->
         <scene sceneID="vWS-7y-MNG">
             <objects>
@@ -117,8 +180,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5sk-xK-f3J">
+                                <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5sk-xK-f3J" id="BLx-SJ-H1v">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -137,22 +202,102 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="XzP-Zg-HFx" kind="show" identifier="inboxToPlaylist" id="tQB-n7-eyK"/>
+                        <segue destination="krS-7z-cXP" kind="show" identifier="inboxToSong" id="GRY-4u-aVk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4a4-jp-yqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.5" y="-947.25"/>
+            <point key="canvasLocation" x="1767" y="-1143.75"/>
+        </scene>
+        <!--Song View Controller-->
+        <scene sceneID="xGi-f5-e9q">
+            <objects>
+                <viewController id="krS-7z-cXP" customClass="SongViewController" customModule="SoundPot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jxl-AO-JCg"/>
+                        <viewControllerLayoutGuide type="bottom" id="hsc-92-s1I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v3V-nq-ylK">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="track" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-lh-1Ko">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="209" width="240" height="33"/>
+                                </variation>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="artist" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bAk-ey-kO6">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="235" width="240" height="34"/>
+                                </variation>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-io-cNn">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="336" width="240" height="128"/>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="album" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0uD-Th-Cox">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="262" width="240" height="36"/>
+                                </variation>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="WbB-lh-1Ko"/>
+                                <exclude reference="bAk-ey-kO6"/>
+                                <exclude reference="ayY-io-cNn"/>
+                                <exclude reference="0uD-Th-Cox"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="WbB-lh-1Ko"/>
+                                <include reference="bAk-ey-kO6"/>
+                                <include reference="ayY-io-cNn"/>
+                                <include reference="0uD-Th-Cox"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="albumLabel" destination="0uD-Th-Cox" id="3pw-8K-TJJ"/>
+                        <outlet property="artistLabel" destination="bAk-ey-kO6" id="JZi-9Q-uM6"/>
+                        <outlet property="coverView" destination="ayY-io-cNn" id="NkX-qI-bYW"/>
+                        <outlet property="trackLabel" destination="WbB-lh-1Ko" id="pQi-pV-LL5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHq-il-1Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2428.5" y="-1143.75"/>
         </scene>
         <!--Playlist-->
         <scene sceneID="OSX-Hr-sVz">
             <objects>
-                <tableViewController id="XzP-Zg-HFx" sceneMemberID="viewController">
+                <tableViewController id="XzP-Zg-HFx" customClass="PlaylistViewController" customModule="SoundPot" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Re9-fi-JSg">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" id="5X3-5N-MRL">
+                                <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5X3-5N-MRL" id="aMd-c9-AWk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -165,14 +310,34 @@
                     <navigationItem key="navigationItem" title="Playlist" id="9IN-Nr-hgy">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="MFr-KS-9RX">
                             <connections>
-                                <segue destination="6mG-4t-6na" kind="presentation" id="tPb-QB-aoW"/>
+                                <segue destination="4sD-Ee-dPt" kind="presentation" id="GbJ-x7-ytH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="LT6-Dj-pIP" kind="show" id="eNE-d8-yNr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1af-d5-LZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524.5" y="-947.25"/>
+            <point key="canvasLocation" x="2428.5" y="-470.25"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TZi-mx-40w">
+            <objects>
+                <viewController id="LT6-Dj-pIP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSY-22-NZM"/>
+                        <viewControllerLayoutGuide type="bottom" id="OIv-x3-649"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sze-WG-k3R">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="208-MZ-uC2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3114" y="-470.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xbA-az-Dp7">
@@ -188,7 +353,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wA-Uv-7SH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221" y="-947.25"/>
+            <point key="canvasLocation" x="1125" y="-1143.75"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="iIN-YT-C2E">
@@ -220,28 +385,28 @@
                                     <rect key="frame" x="280" y="346" width="59" height="30"/>
                                 </variation>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-S7-qlZ">
-                                <rect key="frame" x="138" y="164" width="125" height="130"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-S7-qlZ">
+                                <rect key="frame" x="138" y="164" width="210" height="30"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ArX-XH-bMZ">
-                                        <rect key="frame" x="20" y="20" width="85" height="90"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ArX-XH-bMZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
-                                                <rect key="frame" x="20" y="20" width="97" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                                 </variation>
                                             </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMA-aZ-j2s">
-                                                <rect key="frame" x="20" y="64" width="83" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMA-aZ-j2s">
+                                                <rect key="frame" x="85" y="0.0" width="83" height="30"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqR-xd-zva">
-                                                        <rect key="frame" x="20" y="20" width="83" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqR-xd-zva">
+                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
-                                                                <rect key="frame" x="20" y="20" width="97" height="30"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
+                                                                <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <variation key="heightClass=regular" ambiguous="YES">
@@ -259,8 +424,8 @@
                                                     <rect key="frame" x="1" y="30" width="83" height="30"/>
                                                 </variation>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
-                                                <rect key="frame" x="40" y="114" width="56" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
+                                                <rect key="frame" x="168" y="0.0" width="42" height="30"/>
                                                 <state key="normal" title="Log in">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -302,11 +467,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AjG-6r-1d0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="-62"/>
+            <point key="canvasLocation" x="349.5" y="211.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kUv-nx-2fY"/>
-        <segue reference="tPb-QB-aoW"/>
+        <segue reference="wcx-FK-oWu"/>
+        <segue reference="DE9-1A-Sbe"/>
+        <segue reference="v3u-Ld-Gu9"/>
     </inferredMetricsTieBreakers>
 </document>

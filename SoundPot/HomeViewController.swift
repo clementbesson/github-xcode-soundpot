@@ -22,12 +22,16 @@ class HomeViewController: UIViewController {
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
     }
+
+    @IBAction func historyButton(sender: UIButton) {
+        timer.invalidate()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        var query = PFQuery(className: "Messages")
+        let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)

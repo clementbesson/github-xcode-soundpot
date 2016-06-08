@@ -1,23 +1,21 @@
 //
-//  InboxViewController.swift
+//  HistoryViewControler.swift
 //  SoundPot
 //
-//  Created by Clement Besson on 6/7/16.
+//  Created by Clement Besson on 6/8/16.
 //  Copyright © 2016 Clement Besson. All rights reserved.
 //
+
 
 import UIKit
 import Parse
 import MediaPlayer
 
-
-class InboxViewController: UITableViewController {
+class HistoryViewControler: UITableViewController {
 
     // MARK: Properties
     var friendsRelation = PFRelation()
-    var songs :NSArray = []
-    var theSong :NSArray = []
-    var songId :String?! = ""
+    var friends :NSArray = []
     let currentUser = PFUser.currentUser()
     var song = PFObject(className: "Messages")
     
@@ -33,23 +31,23 @@ class InboxViewController: UITableViewController {
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             // Get messages from server
-            let query = PFQuery(className: "Messages")
-            query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
-            query.orderByAscending("track")
+            var query = PFQuery(className: "User")
+            query = self.friendsRelation.query()
+            query.orderByAscending("username")
             query.findObjectsInBackgroundWithBlock {
-                    (objects: [PFObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                
+                if error == nil {
+                    // The find succeeded.
+                    self.friends = objects!
+                    self.tableView.reloadData()
+                }
                     
-                    if error == nil {
-                        // The find succeeded.
-                        self.songs = objects!
-                        self.tableView.reloadData()
-                    }
-                    
-                    else {
-                        print(error)
-                    }
+                else {
+                    print(error)
                 }
             }
+        }
         else {
             let storyboard = UIStoryboard(name: "Main", bundle:nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("login")
@@ -60,18 +58,18 @@ class InboxViewController: UITableViewController {
     // MARK: - Table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(self.songs.count)
-        return self.songs.count
+        return self.friends.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        let message = self.songs.objectAtIndex(indexPath.row)
-        let trackName = message.objectForKey("track")
-        print(trackName)
-        cell.textLabel?.text = String(trackName!)
+        let message = self.friends.objectAtIndex(indexPath.row)
+        let friendName = message.objectForKey("username")
+        print(friendName)
+        cell.textLabel?.text = String(friendName!)
         if (indexPath.row % 2 == 0){
-        cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+            cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         }
         else {
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1)
@@ -80,23 +78,23 @@ class InboxViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.songId = self.songs.objectAtIndex(indexPath.row).objectId
-        self.song = self.songs.objectAtIndex(indexPath.row) as! PFObject
-        self.performSegueWithIdentifier("inboxToSong", sender: self)
-        }
+        //self.songId = self.songs.objectAtIndex(indexPath.row).objectId
+        //self.song = self.songs.objectAtIndex(indexPath.row) as! PFObject
+        //self.performSegueWithIdentifier("inboxToSong", sender: self)
+    }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         //self.songId = self.songs.objectAtIndex(indexPath.row).objectId
         if (segue.identifier == "inboxToSong") {
             // pass data to next view
-            let songvc = segue.destinationViewController as! SongViewController
+            //let songvc = segue.destinationViewController as! SongViewController
             //print("ID sent is")
-            print(self.songId)
-            print("Testis")
-            print(self.song.objectForKey("album"))
+            // print(self.songId)
+            //print("Testis")
+            //print(self.song.objectForKey("album"))
             //playlistvc.id = self.songId
-            songvc.selectedSong = self.song
+            //songvc.selectedSong = self.song
         }
     }
 }
