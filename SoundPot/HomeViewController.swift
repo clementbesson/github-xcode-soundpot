@@ -77,30 +77,21 @@ class HomeViewController: UIViewController {
             self.presentViewController(vc, animated: false, completion: nil)
         }
     }
-    
-    
-    
+
     // Gets iOS device player information
     func updateNowPlayingInfo(){
         let player = MPMusicPlayerController.applicationMusicPlayer()
         var currentItem: MPMediaItem
         // if somthing is being played
-        if (player.nowPlayingItem != nil){
-            currentItem = player.nowPlayingItem!
-            let current_title = currentItem.valueForProperty(MPMediaItemPropertyTitle)?.string
-            let current_artist = currentItem.valueForProperty(MPMediaItemPropertyArtist)?.string
-            let current_album = currentItem.valueForProperty(MPMediaItemPropertyAlbumTitle)?.string
-            let current_artwork = currentItem.valueForProperty(MPMediaItemPropertyArtwork)?.imageWithSize(CGSizeMake(300, 300))
-            self.track.text = current_title
-            self.artist.text = current_artist
-            self.album.text = current_album
-            self.artworkImage.image = current_artwork
-        }
-        // Otherwise does not get player info
-        else{
-            print("no song played")
-            return
-        }
+        var instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
+        instanceOfCustomObject.someProperty = "Hello World"
+        instanceOfCustomObject.someMethod()
+        self.track.text = instanceOfCustomObject.trackValue
+        self.artist.text = instanceOfCustomObject.artistValue
+        self.album.text = instanceOfCustomObject.albumValue
+        var artworkImageContent :UIImage
+        artworkImageContent = instanceOfCustomObject.artwork.imageWithSize(CGSizeMake(300, 300))!
+        self.artworkImage.image = artworkImageContent
     }
 }
 

@@ -38,6 +38,8 @@
 		EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8341D088BC4002EB597 /* SongViewController.swift */; };
 		EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8361D089204002EB597 /* HistoryViewControler.swift */; };
 		EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */; };
+		EBEBD83C1D08ACA1002EB597 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */; };
+		EBEBD83E1D08AD53002EB597 /* TrackInfoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,11 @@
 		EBEBD8341D088BC4002EB597 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EBEBD8361D089204002EB597 /* HistoryViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewControler.swift; sourceTree = "<group>"; };
 		EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySongViewController.swift; sourceTree = "<group>"; };
+		EBEBD83A1D08ACA1002EB597 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../HomeViewController.h; sourceTree = "<group>"; };
+		EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ../HomeViewController.m; sourceTree = "<group>"; };
+		EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoLibrary.m; sourceTree = "<group>"; };
+		EBEBD83F1D08ADBC002EB597 /* SounPot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SounPot-Bridging-Header.h"; sourceTree = "<group>"; };
+		EBEBD8401D08AE7D002EB597 /* TrackInfoLibray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoLibray.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +147,11 @@
 		EBD3BECE1D0750D1002A4045 /* SoundPot */ = {
 			isa = PBXGroup;
 			children = (
+				EBEBD83A1D08ACA1002EB597 /* HomeViewController.h */,
+				EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */,
+				EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */,
+				EBEBD8401D08AE7D002EB597 /* TrackInfoLibray.h */,
+				EBEBD83F1D08ADBC002EB597 /* SounPot-Bridging-Header.h */,
 				EBD3BED11D0750D1002A4045 /* AppDelegate.swift */,
 				EBEBD8281D07B8B5002EB597 /* HomeViewController.swift */,
 				EBEBD8301D07D5A1002EB597 /* InboxViewController.swift */,
@@ -310,6 +322,7 @@
 			files = (
 				EBEBD8331D086AA7002EB597 /* PlaylistViewController.swift in Sources */,
 				EBEBD82E1D07C57D002EB597 /* Song.swift in Sources */,
+				EBEBD83E1D08AD53002EB597 /* TrackInfoLibrary.m in Sources */,
 				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
 				EBEBD8311D07D5A1002EB597 /* InboxViewController.swift in Sources */,
 				EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */,
@@ -319,6 +332,7 @@
 				EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */,
 				EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */,
 				EBEBD8291D07B8B5002EB597 /* HomeViewController.swift in Sources */,
+				EBEBD83C1D08ACA1002EB597 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +473,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Clement/SoundPot/SoundPot/SounPot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -480,7 +494,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Clement/SoundPot/SoundPot/SounPot-Bridging-Header.h";
 			};
 			name = Release;
 		};
