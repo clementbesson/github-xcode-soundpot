@@ -13,23 +13,18 @@ import MediaPlayer
 class PlaylistViewController: UITableViewController {
     
     // MARK: Properties
-    var id : String?! = ""//PFObject(className: "Messages")
     var messages = NSArray()
-    var selectedSong = PFObject(className: "Messages")
+    var selectedFriend = PFObject(className: "Users")
+    var song = PFObject(className: "Messages")
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        print(self.selectedSong.objectForKey("artist"))
-        print(self.selectedSong.objectForKey("track"))
-        print(self.selectedSong.objectForKey("album"))
-        /*print("id is")
-        print(self.id?!)
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             let query = PFQuery(className: "Messages")
-            query.whereKey("objectId", equalTo:String(self.id!))
-            //query.whereKey("userName", equalTo:self.sender.objectForKey("userName")!)
-            //query.orderByAscending("CreatedAt")
+            query.whereKey("recipientsIds", equalTo:currentUser!.objectId!)
+            query.whereKey("senderId", equalTo:self.selectedFriend.objectId!)
+            query.orderByAscending("createdAt")
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 
@@ -45,35 +40,13 @@ class PlaylistViewController: UITableViewController {
                     print(error)
                 }
             }
-        }*/
+        }
 
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        let currentUser = PFUser.currentUser()
-        if (currentUser != nil){
-        let query = PFQuery(className: "Messages")
-        query.whereKey("objectId", equalTo:String(self.id))
-        //query.whereKey("userName", equalTo:self.sender.objectForKey("userName")!)
-        //query.orderByAscending("CreatedAt")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                self.messages = objects!
-                self.tableView.reloadData()
-                print("track is")
-                print(self.messages.objectAtIndex(0).objectForKey("track"))
-            }
-                
-            else {
-                print(error)
-                }
-            }
-        }
 
     }
     
@@ -86,10 +59,9 @@ class PlaylistViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        //Configure the cell
-        let song = self.messages.objectAtIndex(indexPath.row)
-        cell.textLabel?.text = String(song.objectForKey("track"))
-        cell.textLabel?.textColor = UIColor.whiteColor()
+        let message = self.messages.objectAtIndex(indexPath.row)
+        let songName = message.objectForKey("track")
+        cell.textLabel?.text = String(songName!)
         if (indexPath.row % 2 == 0){
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         }
@@ -99,14 +71,18 @@ class PlaylistViewController: UITableViewController {
         return cell
     }
     
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedSong = self.messages.objectAtIndex(indexPath.row) as! PFObject
+        self.song = self.messages.objectAtIndex(indexPath.row) as! PFObject
+        self.performSegueWithIdentifier("PlaylistToSong", sender: self)
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-            
-        
+        if (segue.identifier == "PlaylistToSong") {
+            // pass data to next view
+            let songvc = segue.destinationViewController as! HistorySongViewController
+            songvc.selectedSong = self.song
+        }
     }
-    
 }

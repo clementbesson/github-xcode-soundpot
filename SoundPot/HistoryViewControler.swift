@@ -17,7 +17,7 @@ class HistoryViewControler: UITableViewController {
     var friendsRelation = PFRelation()
     var friends :NSArray = []
     let currentUser = PFUser.currentUser()
-    var song = PFObject(className: "Messages")
+    var friend = PFObject(className: "Users")
     
     //var selectedTrack = NSArray =
     override func viewDidLoad() {
@@ -57,7 +57,6 @@ class HistoryViewControler: UITableViewController {
     
     // MARK: - Table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(self.songs.count)
         return self.friends.count
     }
     
@@ -78,23 +77,16 @@ class HistoryViewControler: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.songId = self.songs.objectAtIndex(indexPath.row).objectId
-        //self.song = self.songs.objectAtIndex(indexPath.row) as! PFObject
-        //self.performSegueWithIdentifier("inboxToSong", sender: self)
+        self.friend = self.friends.objectAtIndex(indexPath.row) as! PFObject
+        self.performSegueWithIdentifier("HistoryToPlaylist", sender: self)
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        //self.songId = self.songs.objectAtIndex(indexPath.row).objectId
-        if (segue.identifier == "inboxToSong") {
+        if (segue.identifier == "HistoryToPlaylist") {
             // pass data to next view
-            //let songvc = segue.destinationViewController as! SongViewController
-            //print("ID sent is")
-            // print(self.songId)
-            //print("Testis")
-            //print(self.song.objectForKey("album"))
-            //playlistvc.id = self.songId
-            //songvc.selectedSong = self.song
+            let playlistvc = segue.destinationViewController as! PlaylistViewController
+            playlistvc.selectedFriend = self.friend
         }
     }
 }

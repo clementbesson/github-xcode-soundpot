@@ -148,7 +148,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="XzP-Zg-HFx" kind="show" identifier="historyToFriend" id="v3u-Ld-Gu9"/>
+                        <segue destination="XzP-Zg-HFx" kind="show" identifier="HistoryToPlaylist" id="v3u-Ld-Gu9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOj-JF-WyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -315,25 +315,82 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="LT6-Dj-pIP" kind="show" id="eNE-d8-yNr"/>
+                        <segue destination="LT6-Dj-pIP" kind="show" identifier="PlaylistToSong" id="eNE-d8-yNr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1af-d5-LZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2428.5" y="-470.25"/>
         </scene>
-        <!--View Controller-->
+        <!--History Song View Controller-->
         <scene sceneID="TZi-mx-40w">
             <objects>
-                <viewController id="LT6-Dj-pIP" sceneMemberID="viewController">
+                <viewController id="LT6-Dj-pIP" customClass="HistorySongViewController" customModule="SoundPot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KSY-22-NZM"/>
                         <viewControllerLayoutGuide type="bottom" id="OIv-x3-649"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sze-WG-k3R">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="track" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Ra-ZL-com">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="252" width="240" height="43"/>
+                                </variation>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="artist" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-7l-l8f">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="294" width="240" height="34"/>
+                                </variation>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R44-Hj-bTl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="397" width="240" height="128"/>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="album" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wOk-it-leO">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="331" width="240" height="36"/>
+                                </variation>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8Ra-ZL-com"/>
+                                <exclude reference="gfj-7l-l8f"/>
+                                <exclude reference="R44-Hj-bTl"/>
+                                <exclude reference="wOk-it-leO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8Ra-ZL-com"/>
+                                <include reference="gfj-7l-l8f"/>
+                                <include reference="R44-Hj-bTl"/>
+                                <include reference="wOk-it-leO"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="albumLabel" destination="wOk-it-leO" id="NFT-jw-hdr"/>
+                        <outlet property="artistLabel" destination="gfj-7l-l8f" id="0kr-gv-rtb"/>
+                        <outlet property="coverView" destination="R44-Hj-bTl" id="YOM-8p-4ds"/>
+                        <outlet property="trackLabel" destination="8Ra-ZL-com" id="O2q-XT-u6V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="208-MZ-uC2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -472,7 +529,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="wcx-FK-oWu"/>
-        <segue reference="DE9-1A-Sbe"/>
+        <segue reference="GbJ-x7-ytH"/>
         <segue reference="v3u-Ld-Gu9"/>
     </inferredMetricsTieBreakers>
 </document>

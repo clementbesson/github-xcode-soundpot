@@ -37,6 +37,7 @@
 		EBEBD8331D086AA7002EB597 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */; };
 		EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8341D088BC4002EB597 /* SongViewController.swift */; };
 		EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8361D089204002EB597 /* HistoryViewControler.swift */; };
+		EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		EBEBD8341D088BC4002EB597 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EBEBD8361D089204002EB597 /* HistoryViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewControler.swift; sourceTree = "<group>"; };
+		EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySongViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */,
 				EBD3BEF41D075623002A4045 /* LoginViewController.swift */,
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
+				EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */,
 				EBEBD8361D089204002EB597 /* HistoryViewControler.swift */,
 				EBEBD8341D088BC4002EB597 /* SongViewController.swift */,
 				EBD3BEF61D076D81002A4045 /* User.swift */,
@@ -314,6 +317,7 @@
 				EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */,
 				EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */,
 				EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */,
+				EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */,
 				EBEBD8291D07B8B5002EB597 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
