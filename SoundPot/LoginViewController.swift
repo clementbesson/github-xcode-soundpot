@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     // MARK: Properties
@@ -22,8 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         // The self refers to the ViewController class, because it’s referenced inside the scope of the LoginViewController class definition.
         
         // LoginViewController is now a delegate for usernameTextField.
-        
-        
 
     }
 
@@ -46,7 +45,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
         print("button")
-        var user = User(username: usernameTextField.text!, password: passwordTextField.text!)
+        let user = User(username: usernameTextField.text!, password: passwordTextField.text!)
+        
+        if user?.username == "" || user?.password == "" {
+            // show alert if invalid credentials
+            let loginalert = UIAlertController(title: "Invalid Credentials", message: "Please enter a username and password!", preferredStyle: UIAlertControllerStyle.Alert)
+            loginalert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(loginalert, animated: true, completion: nil)
+        }
+        
+        else{
+            // if valid credentials connects to Parse
+            PFUser.logInWithUsernameInBackground((user?.username)!, password: (user?.password)!) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
+                    // Successful login
+                    print("all good")
+                    var currentUser = PFUser.currentUser()
+                    while currentUser == nil {
+                        // Fetch Data
+                        currentUser = PFUser.currentUser()
+                    }
+                    print(currentUser?.username)
+                    self.performSegueWithIdentifier("LoginToHome", sender: nil)
+                    
+                } else {
+                    // The login failed. Check error to see why.
+                }
+            }
+            
+        }
 
     }
     
