@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -46,8 +47,7 @@ class HomeViewController: UIViewController {
                 print(String( objects!.count))
                 
                 timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
-            
-                //self.updateNowPlayingInfo()
+                self.updateNowPlayingInfo()
                 
             } else {
                 // Log details of the failure
@@ -72,13 +72,9 @@ class HomeViewController: UIViewController {
             print(currentUser!.username)
         }
         else {
-            //let viewController: UIViewController =
             let storyboard = UIStoryboard(name: "Main", bundle:nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("login")
-            
             self.presentViewController(vc, animated: false, completion: nil)
-            //self.performSegueWithIdentifier("HomeToLogin", sender: nil)
-            
         }
     }
     
@@ -106,7 +102,6 @@ class HomeViewController: UIViewController {
             return
         }
     }
-    
 }
 
 
