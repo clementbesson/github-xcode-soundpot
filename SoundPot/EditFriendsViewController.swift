@@ -113,12 +113,16 @@ class EditFriendsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        let cellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if cell.accessoryType == .Checkmark {
+                cell.accessoryType = .None
 
-        
+            } else {
+                cell.accessoryType = .Checkmark
+ 
+            }
+        }
     }
     
     // MARK: - Navigation
