@@ -16,6 +16,7 @@ class SongViewController: UIViewController {
     var messages = NSArray()
     var selectedSong = PFObject(className: "Messages")
     var audioPlayer =  AVAudioPlayer()
+    var currentUser = PFUser.currentUser()
     
     @IBOutlet weak var trackLabel: UITextView!
     @IBOutlet weak var artistLabel: UITextView!
@@ -39,6 +40,17 @@ class SongViewController: UIViewController {
         audioPlayer.volume = 1.0
         audioPlayer.play()
         print(songURL)
+        
+        //remove user from recipients list
+        
+        let recipientIds = self.selectedSong.objectForKey("recipientsIds")
+        print("old recipients")
+        print(recipientIds)
+        recipientIds?.removeObject(self.currentUser?.objectId)
+        self.selectedSong.setObject(recipientIds!, forKey: "recipientsIds")
+        print("new recipients")
+        print(recipientIds)
+        self.selectedSong.saveInBackground()
     }
 
 override func viewDidAppear(animated: Bool) {

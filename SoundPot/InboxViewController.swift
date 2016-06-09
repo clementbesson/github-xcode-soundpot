@@ -29,10 +29,6 @@ class InboxViewController: UITableViewController {
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.view.frame)
-        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
-        //let imageView = UIImageView(frame: <#T##CGRect#>)
-        
-        //let image = UIImage(named: "background-noglow.png")!
         let image = UIImage(named: "background-noglow.png")!
         imageView.image = image
         self.view.addSubview(imageView)
@@ -80,7 +76,6 @@ class InboxViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         let message = self.songs.objectAtIndex(indexPath.row)
         let trackName = message.objectForKey("track")
-        print(trackName)
         cell.textLabel?.text = String(trackName!)
         cell.textLabel?.textColor = UIColor.whiteColor()
         if (indexPath.row % 2 == 0){
@@ -104,11 +99,6 @@ class InboxViewController: UITableViewController {
         if (segue.identifier == "inboxToSong") {
             // pass data to next view
             let songvc = segue.destinationViewController as! SongViewController
-            //print("ID sent is")
-            print(self.songId)
-            print("Testis")
-            print(self.song.objectForKey("album"))
-            //playlistvc.id = self.songId
             songvc.selectedSong = self.song
         }
     }

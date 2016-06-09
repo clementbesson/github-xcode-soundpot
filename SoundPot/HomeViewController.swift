@@ -51,8 +51,6 @@ class HomeViewController: UIViewController {
        
     }
     
-    
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
