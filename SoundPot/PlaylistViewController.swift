@@ -22,7 +22,7 @@ class PlaylistViewController: UITableViewController {
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             let query = PFQuery(className: "Messages")
-            query.whereKey("recipientsIds", equalTo:currentUser!.objectId!)
+            query.whereKey("recipientsIds2", equalTo:currentUser!.objectId!)
             query.whereKey("senderId", equalTo:self.selectedFriend.objectId!)
             query.orderByAscending("createdAt")
             query.findObjectsInBackgroundWithBlock {

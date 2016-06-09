@@ -132,9 +132,6 @@ class SendViewController: UITableViewController {
         
         let artworkData = NSData(data: UIImagePNGRepresentation(artworkImageContent)!)
         let audioData = NSData(contentsOfURL: songURL)
-        
-        
-        
         let imageFile = PFFile(name: "image.png", data: artworkData)
         let soundFile = PFFile(name: "song.m4a", data: audioData!)
         let message = PFObject(className: "Messages")

@@ -255,39 +255,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="track" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-lh-1Ko">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="track" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-lh-1Ko">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="209" width="240" height="33"/>
+                                    <rect key="frame" x="0.0" y="486" width="400" height="33"/>
                                 </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="artist" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bAk-ey-kO6">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="artist" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bAk-ey-kO6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="235" width="240" height="34"/>
+                                    <rect key="frame" x="0.0" y="514" width="400" height="34"/>
                                 </variation>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-io-cNn">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="336" width="240" height="128"/>
+                                    <rect key="frame" x="0.0" y="64" width="400" height="400"/>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="album" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0uD-Th-Cox">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="album" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0uD-Th-Cox">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="262" width="240" height="36"/>
+                                    <rect key="frame" x="0.0" y="544" width="400" height="36"/>
                                 </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-AH-wS6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="185" y="600" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playButton:" destination="krS-7z-cXP" eventType="touchUpInside" id="ITX-7L-Nbg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -296,6 +306,7 @@
                                 <exclude reference="bAk-ey-kO6"/>
                                 <exclude reference="ayY-io-cNn"/>
                                 <exclude reference="0uD-Th-Cox"/>
+                                <exclude reference="m3U-AH-wS6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -304,6 +315,7 @@
                                 <include reference="bAk-ey-kO6"/>
                                 <include reference="ayY-io-cNn"/>
                                 <include reference="0uD-Th-Cox"/>
+                                <include reference="m3U-AH-wS6"/>
                             </mask>
                         </variation>
                     </view>
