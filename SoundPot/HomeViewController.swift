@@ -29,10 +29,29 @@ class HomeViewController: UIViewController {
     @IBAction func settingsButton(sender: UIButton) {
         timer.invalidate()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func sendButton(sender: AnyObject) {
+        timer.invalidate()
+        let instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
+        instanceOfCustomObject.someProperty = "Hello World"
+        instanceOfCustomObject.someMethod()
+        if (instanceOfCustomObject.trackValue != "No song currently played"){
+            self.performSegueWithIdentifier("HomeToSend", sender: self)
+        }
+        else {
+            // show alert if not song being played
+            let loginalert = UIAlertController(title: "Music Off :(", message: "You need to listen to a song!", preferredStyle: UIAlertControllerStyle.Alert)
+            loginalert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(loginalert, animated: true, completion: nil)
+        }
+        
         
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         let query = PFQuery(className: "Messages")
@@ -83,18 +102,19 @@ class HomeViewController: UIViewController {
 
     // Gets iOS device player information
     func updateNowPlayingInfo(){
-        let player = MPMusicPlayerController.applicationMusicPlayer()
-        var currentItem: MPMediaItem
         // if somthing is being played
-        var instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
+        let instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
         instanceOfCustomObject.someProperty = "Hello World"
         instanceOfCustomObject.someMethod()
+        
         self.track.text = instanceOfCustomObject.trackValue
         self.artist.text = instanceOfCustomObject.artistValue
         self.album.text = instanceOfCustomObject.albumValue
-        var artworkImageContent :UIImage
-        artworkImageContent = instanceOfCustomObject.artwork.imageWithSize(CGSizeMake(300, 300))!
-        self.artworkImage.image = artworkImageContent
+        if (instanceOfCustomObject.trackValue != "No song currently played"){
+            var artworkImageContent :UIImage
+            artworkImageContent = instanceOfCustomObject.artwork.imageWithSize(CGSizeMake(300, 300))!
+            self.artworkImage.image = artworkImageContent
+        }
     }
 }
 

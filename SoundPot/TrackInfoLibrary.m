@@ -15,7 +15,9 @@
     MPMusicPlayerController *MyPlayer= [[MPMusicPlayerController alloc] init ];
     MPMediaItem * Now = [MyPlayer nowPlayingItem];
     if (Now==NULL) {
-        return;
+        _trackValue = @"No song currently played";
+        _artistValue= @"" ;
+        _albumValue= @"" ;
     }
     else {
         _trackValue=[Now valueForProperty:MPMediaItemPropertyTitle];

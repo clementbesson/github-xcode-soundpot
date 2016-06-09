@@ -1,60 +1,40 @@
 //
-//  EditFriendsViewController.swift
+//  SendViewController.swift
 //  SoundPot
 //
 //  Created by Clement Besson on 6/8/16.
 //  Copyright © 2016 Clement Besson. All rights reserved.
 //
 
-import UIKit
 import Parse
+import UIKit
 import MediaPlayer
 
-class EditFriendsViewController: UITableViewController {
+class SendViewController: UITableViewController {
 
     
     // MARK: Properties
     var friendsRelation = PFRelation()
-    var allUser = PFUser()
-    
-    var users :NSArray = []
-    var friends : NSArray = []
+    var friends :NSArray = []
     let currentUser = PFUser.currentUser()
     var friend = PFObject(className: "Users")
+    var recipients : NSMutableArray = []
+    
     
     //var selectedTrack = NSArray =
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        //self.navigationController.view.backgroundColor = UIColor(white: 0, alpha: 0)
         self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
-        //self.friends = self.friendsRelation
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             // Get messages from server
-            var query: PFQuery = PFUser.query()!
-            
-            //query = self.allUser.query()
-            query.orderByAscending("username")
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
-                    // The find succeeded.
-                    self.users = objects!
-                    self.tableView.reloadData()
-                }
-                    
-                else {
-                    print(error)
-                }
-            }
-            
-            
-          
-            //var friendQuery = PFQuery(className: "User")
-            query = PFQuery(className: "User")
+            var query = PFQuery(className: "User")
             query = self.friendsRelation.query()
             query.orderByAscending("username")
             query.findObjectsInBackgroundWithBlock {
@@ -70,7 +50,6 @@ class EditFriendsViewController: UITableViewController {
                     print(error)
                 }
             }
-            
         }
         else {
             let storyboard = UIStoryboard(name: "Main", bundle:nil)
@@ -81,75 +60,47 @@ class EditFriendsViewController: UITableViewController {
     
     // MARK: - Table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        return self.friends.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        let user = self.users.objectAtIndex(indexPath.row)
-        let userName = user.objectForKey("username")
-        cell.textLabel?.text = String(userName!)
-
-        let test = self.isFriende(user as! PFUser)
-        
-        if (test == true){
-            cell.accessoryType = .Checkmark
-        }
-        else {
-            cell.accessoryType = .None
-        }
-        
+        let message = self.friends.objectAtIndex(indexPath.row)
+        let friendName = message.objectForKey("username")
+        print(friendName)
+        cell.textLabel?.text = String(friendName!)
         if (indexPath.row % 2 == 0){
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         }
         else {
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1)
         }
-        
-
-        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        let user = self.users.objectAtIndex(indexPath.row)
+        let recipient = self.friends.objectAtIndex(indexPath.row)
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell.accessoryType == .Checkmark {
+                self.recipients.removeObject(recipient.objectId!!)
                 cell.accessoryType = .None
-                //friendsRelation.removeObject(user as! PFObject)
             } else {
+                self.recipients.addObject(recipient.objectId!!)
                 cell.accessoryType = .Checkmark
-                //friendsRelation.addObject(user as! PFObject)
             }
+            
         }
-       // currentUser?.saveInBackgroundWithBlock({(succeded, error) in
-            //if (error != nil) {
-            //    print(error)
-          //  }
-        //})
+        print(recipients)
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
-    }
-    
-    // MARK - Friend Test
-    func isFriende(user: PFUser) -> Bool {
-        var testValue = false
-        for parseUser in self.friends {
-            if user.objectId == parseUser.objectId {
-                print("is friend")
-                testValue = true
-                break
-            }
-            else {
-                print ("is not friend")
-                testValue = false
-            }
+        if (segue.identifier == "HistoryToPlaylist") {
+
+            
+            
         }
-        return testValue
     }
 }
+

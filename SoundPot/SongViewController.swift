@@ -22,13 +22,9 @@ class SongViewController: UIViewController {
 
 override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(true)
-    print(self.selectedSong.objectForKey("artist"))
-    print(self.selectedSong.objectForKey("track"))
-    print(self.selectedSong.objectForKey("album"))
-    
-    trackLabel.text = String(self.selectedSong.objectForKey("track"))
-    artistLabel.text = String(self.selectedSong.objectForKey("artist"))
-    albumLabel.text = String(self.selectedSong.objectForKey("album"))
+    trackLabel.text = String(self.selectedSong.objectForKey("track")!)
+    artistLabel.text = String(self.selectedSong.objectForKey("artist")!)
+    albumLabel.text = String(self.selectedSong.objectForKey("album")!)
     //let imageFile = selectedSong.objectForKey("artwork")
     //let imageUrl = NSURL(string: imageFile.url)
     //let image = UIImage()
