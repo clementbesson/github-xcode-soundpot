@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB127ED01D09DCF70089C8A6 /* launchscreen-soundpot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB127ECF1D09DCF70089C8A6 /* launchscreen-soundpot.storyboard */; };
+		EB127ED31D09DDD80089C8A6 /* launch-image-soundpot.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127ED21D09DDD80089C8A6 /* launch-image-soundpot.png */; };
+		EB127ED51D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127ED41D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png */; };
+		EB127ED71D09E1970089C8A6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127ED61D09E1970089C8A6 /* background.png */; };
+		EB127ED91D09E2BE0089C8A6 /* icon-inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127ED81D09E2BE0089C8A6 /* icon-inbox.png */; };
+		EB127EDB1D09E3450089C8A6 /* new-message-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127EDA1D09E3450089C8A6 /* new-message-icon.png */; };
+		EB127EDF1D09E4E90089C8A6 /* playlist-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127EDC1D09E4E90089C8A6 /* playlist-icon.png */; };
+		EB127EE01D09E4E90089C8A6 /* send-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127EDD1D09E4E90089C8A6 /* send-icon.png */; };
+		EB127EE11D09E4E90089C8A6 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB127EDE1D09E4E90089C8A6 /* settings-icon.png */; };
+		EB2DCD781D09E9BE0036245B /* background-noglow.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2DCD771D09E9BE0036245B /* background-noglow.png */; };
 		EB3EAC711D09339900BF28A3 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC701D09339900BF28A3 /* SendViewController.swift */; };
 		EB3EAC741D093E3B00BF28A3 /* UploadLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */; };
 		EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440A1D08CD4300384396 /* SettingsViewController.swift */; };
@@ -57,6 +67,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB127ECF1D09DCF70089C8A6 /* launchscreen-soundpot.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "launchscreen-soundpot.storyboard"; sourceTree = "<group>"; };
+		EB127ED21D09DDD80089C8A6 /* launch-image-soundpot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-image-soundpot.png"; sourceTree = "<group>"; };
+		EB127ED41D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundpot-lauchscreen-169.png"; sourceTree = "<group>"; };
+		EB127ED61D09E1970089C8A6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		EB127ED81D09E2BE0089C8A6 /* icon-inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-inbox.png"; sourceTree = "<group>"; };
+		EB127EDA1D09E3450089C8A6 /* new-message-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-message-icon.png"; sourceTree = "<group>"; };
+		EB127EDC1D09E4E90089C8A6 /* playlist-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist-icon.png"; sourceTree = "<group>"; };
+		EB127EDD1D09E4E90089C8A6 /* send-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-icon.png"; sourceTree = "<group>"; };
+		EB127EDE1D09E4E90089C8A6 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
+		EB2DCD771D09E9BE0036245B /* background-noglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-noglow.png"; sourceTree = "<group>"; };
 		EB3EAC701D09339900BF28A3 /* SendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		EB3EAC721D093E2400BF28A3 /* UploadLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadLibrary.h; sourceTree = "<group>"; };
 		EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadLibrary.m; sourceTree = "<group>"; };
@@ -133,6 +153,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB127ED11D09DDC60089C8A6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EB127ED41D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png */,
+				EB127ED21D09DDD80089C8A6 /* launch-image-soundpot.png */,
+				EB127ED61D09E1970089C8A6 /* background.png */,
+				EB127EDA1D09E3450089C8A6 /* new-message-icon.png */,
+				EB127ED81D09E2BE0089C8A6 /* icon-inbox.png */,
+				EB127EDC1D09E4E90089C8A6 /* playlist-icon.png */,
+				EB2DCD771D09E9BE0036245B /* background-noglow.png */,
+				EB127EDD1D09E4E90089C8A6 /* send-icon.png */,
+				EB127EDE1D09E4E90089C8A6 /* settings-icon.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		EBD3BEC31D0750D1002A4045 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +191,8 @@
 		EBD3BECE1D0750D1002A4045 /* SoundPot */ = {
 			isa = PBXGroup;
 			children = (
+				EB127ED11D09DDC60089C8A6 /* images */,
+				EB127ECF1D09DCF70089C8A6 /* launchscreen-soundpot.storyboard */,
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
 				EBEBD83F1D08ADBC002EB597 /* SounPot-Bridging-Header.h */,
 				EB3EAC721D093E2400BF28A3 /* UploadLibrary.h */,
@@ -314,7 +352,17 @@
 			files = (
 				EBD3BEDA1D0750D1002A4045 /* Main.storyboard in Resources */,
 				EBD3BEDF1D0750D1002A4045 /* LaunchScreen.xib in Resources */,
+				EB127EDF1D09E4E90089C8A6 /* playlist-icon.png in Resources */,
+				EB127ED71D09E1970089C8A6 /* background.png in Resources */,
+				EB127EDB1D09E3450089C8A6 /* new-message-icon.png in Resources */,
+				EB2DCD781D09E9BE0036245B /* background-noglow.png in Resources */,
+				EB127ED51D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png in Resources */,
+				EB127ED01D09DCF70089C8A6 /* launchscreen-soundpot.storyboard in Resources */,
+				EB127EE11D09E4E90089C8A6 /* settings-icon.png in Resources */,
+				EB127EE01D09E4E90089C8A6 /* send-icon.png in Resources */,
 				EBD3BEDC1D0750D1002A4045 /* Images.xcassets in Resources */,
+				EB127ED31D09DDD80089C8A6 /* launch-image-soundpot.png in Resources */,
+				EB127ED91D09E2BE0089C8A6 /* icon-inbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

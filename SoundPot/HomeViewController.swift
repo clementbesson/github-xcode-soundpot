@@ -48,12 +48,14 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
     
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
         if (currentUser != nil) {

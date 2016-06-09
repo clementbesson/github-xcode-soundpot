@@ -24,7 +24,19 @@ class InboxViewController: UITableViewController {
     //var selectedTrack = NSArray =
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        let imageView = UIImageView(frame: self.view.frame)
+        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
+        //let imageView = UIImageView(frame: <#T##CGRect#>)
+        
+        //let image = UIImage(named: "background-noglow.png")!
+        let image = UIImage(named: "background-noglow.png")!
+        imageView.image = image
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
         self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
     }
     
@@ -70,6 +82,7 @@ class InboxViewController: UITableViewController {
         let trackName = message.objectForKey("track")
         print(trackName)
         cell.textLabel?.text = String(trackName!)
+        cell.textLabel?.textColor = UIColor.whiteColor()
         if (indexPath.row % 2 == 0){
         cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         }

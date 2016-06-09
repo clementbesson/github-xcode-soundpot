@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+        //UIApplication.sharedApplication().statusBarStyle = .BlackOpaque
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
             $0.applicationId = "3Y341Sui1yO5WCOFDXc8SmJjJrVKJVzMeh4N48pE"

@@ -23,6 +23,17 @@ class HistoryViewControler: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        let imageView = UIImageView(frame: self.view.frame)
+        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
+        //let imageView = UIImageView(frame: <#T##CGRect#>)
+        
+        //let image = UIImage(named: "background-noglow.png")!
+        let image = UIImage(named: "background-noglow.png")!
+        imageView.image = image
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
         self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
     }
     
