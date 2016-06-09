@@ -26,6 +26,9 @@ class HomeViewController: UIViewController {
     @IBAction func historyButton(sender: UIButton) {
         timer.invalidate()
     }
+    @IBAction func settingsButton(sender: UIButton) {
+        timer.invalidate()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

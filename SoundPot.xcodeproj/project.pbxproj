@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440A1D08CD4300384396 /* SettingsViewController.swift */; };
+		EBA4440D1D08D79A00384396 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440C1D08D79A00384396 /* FriendsViewController.swift */; };
+		EBA4440F1D08DBF800384396 /* EditFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */; };
 		EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BED11D0750D1002A4045 /* AppDelegate.swift */; };
 		EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BED31D0750D1002A4045 /* SoundPot.xcdatamodeld */; };
 		EBD3BEDA1D0750D1002A4045 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD3BED81D0750D1002A4045 /* Main.storyboard */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EBA4440A1D08CD4300384396 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EBA4440C1D08D79A00384396 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFriendsViewController.swift; sourceTree = "<group>"; };
 		EBD3BECC1D0750D1002A4045 /* SoundPot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundPot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD3BED01D0750D1002A4045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD3BED11D0750D1002A4045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				EBEBD83A1D08ACA1002EB597 /* HomeViewController.h */,
+				EBA4440C1D08D79A00384396 /* FriendsViewController.swift */,
 				EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */,
 				EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */,
 				EBEBD8401D08AE7D002EB597 /* TrackInfoLibray.h */,
@@ -158,6 +165,8 @@
 				EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */,
 				EBD3BEF41D075623002A4045 /* LoginViewController.swift */,
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
+				EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */,
+				EBA4440A1D08CD4300384396 /* SettingsViewController.swift */,
 				EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */,
 				EBEBD8361D089204002EB597 /* HistoryViewControler.swift */,
 				EBEBD8341D088BC4002EB597 /* SongViewController.swift */,
@@ -321,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBEBD8331D086AA7002EB597 /* PlaylistViewController.swift in Sources */,
+				EBA4440D1D08D79A00384396 /* FriendsViewController.swift in Sources */,
 				EBEBD82E1D07C57D002EB597 /* Song.swift in Sources */,
 				EBEBD83E1D08AD53002EB597 /* TrackInfoLibrary.m in Sources */,
 				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
@@ -329,6 +339,8 @@
 				EBD3BEF71D076D81002A4045 /* User.swift in Sources */,
 				EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */,
 				EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */,
+				EBA4440F1D08DBF800384396 /* EditFriendsViewController.swift in Sources */,
+				EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */,
 				EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */,
 				EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */,
 				EBEBD8291D07B8B5002EB597 /* HomeViewController.swift in Sources */,
