@@ -31,7 +31,13 @@
                                     <rect key="frame" x="0.0" y="22" width="400" height="400"/>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="track" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BaQ-TP-4Gy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurry.png" translatesAutoresizingMaskIntoConstraints="NO" id="tIg-hK-jSK">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-5" y="420" width="405" height="108"/>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BaQ-TP-4Gy">
                                 <rect key="frame" x="161" y="312" width="240" height="33"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -41,10 +47,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="427" width="380" height="33"/>
+                                    <rect key="frame" x="0.0" y="427" width="380" height="36"/>
                                 </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="album" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xY1-oe-OEq">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xY1-oe-OEq">
                                 <rect key="frame" x="161" y="340" width="240" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -57,11 +63,21 @@
                                     <rect key="frame" x="0.0" y="460" width="380" height="36"/>
                                 </variation>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EyC-VL-BN1">
+                                <rect key="frame" x="161" y="365" width="240" height="34"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="494" width="380" height="36"/>
+                                </variation>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uga-Kw-4Mg">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" backgroundImage="icon-inbox.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="527" width="60" height="60"/>
+                                    <rect key="frame" x="20" y="537" width="60" height="60"/>
                                 </variation>
                                 <connections>
                                     <action selector="inboxButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="SaZ-9z-jlU"/>
@@ -71,10 +87,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-message-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="3LI-zb-oDH">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="63" y="527" width="26" height="26"/>
+                                    <rect key="frame" x="60" y="531" width="26" height="26"/>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQT-ef-mjd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQT-ef-mjd">
                                 <rect key="frame" x="161" y="421" width="280" height="21"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -83,14 +99,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="63" y="527" width="26" height="26"/>
+                                    <rect key="frame" x="60" y="531" width="26" height="26"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft3-uW-iUO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" backgroundImage="playlist-icon.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="296" y="527" width="60" height="60"/>
+                                    <rect key="frame" x="296" y="537" width="60" height="60"/>
                                 </variation>
                                 <connections>
                                     <action selector="historyButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="zu1-dM-IfP"/>
@@ -101,7 +117,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" backgroundImage="settings-icon.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="107" y="580" width="60" height="60"/>
+                                    <rect key="frame" x="107" y="590" width="60" height="60"/>
                                 </variation>
                                 <connections>
                                     <action selector="settingsButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="cK7-VK-1Ec"/>
@@ -112,27 +128,18 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" backgroundImage="send-icon.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="213" y="580" width="60" height="60"/>
+                                    <rect key="frame" x="213" y="590" width="60" height="60"/>
                                 </variation>
                                 <connections>
                                     <action selector="sendButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="Klo-Av-OHu"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="artist" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EyC-VL-BN1">
-                                <rect key="frame" x="161" y="365" width="240" height="34"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="494" width="380" height="34"/>
-                                </variation>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="0g4-Xu-I6R"/>
+                                <exclude reference="tIg-hK-jSK"/>
                                 <exclude reference="Uga-Kw-4Mg"/>
                                 <exclude reference="3LI-zb-oDH"/>
                                 <exclude reference="Ft3-uW-iUO"/>
@@ -143,6 +150,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="0g4-Xu-I6R"/>
+                                <include reference="tIg-hK-jSK"/>
                                 <include reference="Uga-Kw-4Mg"/>
                                 <include reference="3LI-zb-oDH"/>
                                 <include reference="Ft3-uW-iUO"/>
@@ -570,6 +578,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-noglow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KkN-Ld-c2u">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-7" y="-8" width="414" height="816"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-soundpot-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="U64-8T-PMq">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="135" y="180" width="128" height="128"/>
+                                </variation>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZH-fa-eRv">
                                 <rect key="frame" x="159" y="116" width="188" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -578,87 +598,79 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="84" y="350" width="188" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="76" y="466" width="188" height="21"/>
+                                </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
+                                <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <variation key="heightClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="76" y="386" width="247" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="76" y="353" width="247" height="30"/>
+                                </variation>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek7-73-H0V">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="280" y="346" width="59" height="30"/>
                                 </variation>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-S7-qlZ">
-                                <rect key="frame" x="138" y="164" width="210" height="30"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ArX-XH-bMZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="210" height="30"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
-                                                <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMA-aZ-j2s">
-                                                <rect key="frame" x="85" y="0.0" width="83" height="30"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqR-xd-zva">
-                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <variation key="heightClass=regular" ambiguous="YES">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
-                                                                </variation>
-                                                            </textField>
-                                                        </subviews>
-                                                        <variation key="heightClass=regular" axis="vertical" ambiguous="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
-                                                        </variation>
-                                                    </stackView>
-                                                </subviews>
-                                                <variation key="heightClass=regular" axis="vertical"/>
-                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                                    <rect key="frame" x="1" y="30" width="83" height="30"/>
-                                                </variation>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
-                                                <rect key="frame" x="168" y="0.0" width="42" height="30"/>
-                                                <state key="normal" title="Log in">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                                    <rect key="frame" x="22" y="60" width="42" height="30"/>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="loginButton:" destination="2Na-4l-e5y" eventType="touchUpInside" id="zlM-8m-D0P"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <variation key="heightClass=regular-widthClass=compact" alignment="center" axis="vertical" ambiguous="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="85" height="90"/>
-                                        </variation>
-                                    </stackView>
-                                </subviews>
-                                <variation key="heightClass=regular-widthClass=compact" axis="vertical" fixedFrame="YES">
-                                    <rect key="frame" x="158" y="184" width="85" height="90"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="264" y="462" width="59" height="30"/>
                                 </variation>
-                            </stackView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
+                                <rect key="frame" x="168" y="0.0" width="42" height="30"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="178" y="428" width="42" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginButton:" destination="2Na-4l-e5y" eventType="touchUpInside" id="zlM-8m-D0P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="KkN-Ld-c2u"/>
+                                <exclude reference="U64-8T-PMq"/>
+                                <exclude reference="rIL-Bi-nUq"/>
+                                <exclude reference="sZS-W9-CX9"/>
                                 <exclude reference="ek7-73-H0V"/>
+                                <exclude reference="hhq-fP-hNX"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="ek7-73-H0V"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="KkN-Ld-c2u"/>
+                                <include reference="U64-8T-PMq"/>
+                                <include reference="rIL-Bi-nUq"/>
+                                <include reference="sZS-W9-CX9"/>
+                                <include reference="hhq-fP-hNX"/>
                             </mask>
                         </variation>
                     </view>
@@ -684,21 +696,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSh-bi-OxG">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Log out"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYC-ct-hOZ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="281" y="197" width="52" height="30"/>
+                                    <rect key="frame" x="-5" y="-6" width="410" height="811"/>
                                 </variation>
-                                <connections>
-                                    <segue destination="2Na-4l-e5y" kind="presentation" id="yn1-qd-brS"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-TG-WPj">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Friends"/>
+                                <state key="normal" backgroundImage="friends-icon.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="98" y="197" width="51" height="30"/>
+                                    <rect key="frame" x="78" y="294" width="80" height="80"/>
                                 </variation>
                                 <connections>
                                     <segue destination="cIY-ec-Vzi" kind="showDetail" id="sqV-yo-iih"/>
@@ -719,20 +727,32 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
                                 </variation>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSh-bi-OxG">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" backgroundImage="logout-icon.png"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="243" y="294" width="80" height="80"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="2Na-4l-e5y" kind="presentation" id="yn1-qd-brS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="MSh-bi-OxG"/>
+                                <exclude reference="lYC-ct-hOZ"/>
                                 <exclude reference="l4w-TG-WPj"/>
                                 <exclude reference="xln-5V-HOf"/>
+                                <exclude reference="MSh-bi-OxG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="MSh-bi-OxG"/>
+                                <include reference="lYC-ct-hOZ"/>
                                 <include reference="l4w-TG-WPj"/>
                                 <include reference="xln-5V-HOf"/>
+                                <include reference="MSh-bi-OxG"/>
                             </mask>
                         </variation>
                     </view>
@@ -836,17 +856,21 @@
     <resources>
         <image name="background-noglow.png" width="845" height="1501"/>
         <image name="background.png" width="858" height="1514"/>
+        <image name="blurry.png" width="349" height="221"/>
+        <image name="friends-icon.png" width="212" height="212"/>
         <image name="icon-inbox.png" width="250" height="250"/>
+        <image name="logo-soundpot-2.png" width="129" height="126"/>
+        <image name="logout-icon.png" width="120" height="120"/>
         <image name="new-message-icon.png" width="110" height="110"/>
         <image name="playlist-icon.png" width="212" height="212"/>
         <image name="send-icon.png" width="212" height="212"/>
         <image name="settings-icon.png" width="212" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wcx-FK-oWu"/>
+        <segue reference="8dD-e9-WFP"/>
+        <segue reference="J4U-MB-m02"/>
+        <segue reference="zK6-B2-Hqg"/>
         <segue reference="DE9-1A-Sbe"/>
         <segue reference="v3u-Ld-Gu9"/>
-        <segue reference="J4U-MB-m02"/>
-        <segue reference="je5-Wq-cOO"/>
     </inferredMetricsTieBreakers>
 </document>

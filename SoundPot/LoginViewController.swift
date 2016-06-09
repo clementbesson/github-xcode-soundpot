@@ -20,6 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         // Handle the text field’s user input through delegate callbacks.
         usernameTextField.delegate = self
+        passwordTextField.delegate = self
         // The self refers to the ViewController class, because it’s referenced inside the scope of the LoginViewController class definition.
         
         // LoginViewController is now a delegate for usernameTextField.
@@ -44,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
-        print("button")
+        
         let user = User(username: usernameTextField.text!, password: passwordTextField.text!)
         
         if user?.username == "" || user?.password == "" {
