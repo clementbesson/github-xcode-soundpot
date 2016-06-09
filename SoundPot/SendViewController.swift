@@ -20,6 +20,25 @@ class SendViewController: UITableViewController {
     var friend = PFObject(className: "Users")
     var recipients : NSMutableArray = []
     
+    @IBAction func sendButton(sender: UIBarButtonItem) {
+        let instanceOfCustomObject: UploadLibrary = UploadLibrary()
+        instanceOfCustomObject.someProperty = "Hello World"
+        instanceOfCustomObject.someMethod()
+        
+       // let audioURL =
+        let artwork = instanceOfCustomObject.artwork
+        let track = instanceOfCustomObject.trackValue
+        let artist = instanceOfCustomObject.artistValue
+        let album = instanceOfCustomObject.albumValue
+        
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            let songURL = instanceOfCustomObject.audioURL
+            self.sendToParse(track, artist: artist, album: album, artwork: instanceOfCustomObject.artwork, songURL: songURL)
+        }
+        //let artworkImage.image = artworkImageContent
+   
+    }
     
     //var selectedTrack = NSArray =
     override func viewDidLoad() {
@@ -92,6 +111,55 @@ class SendViewController: UITableViewController {
             
         }
         print(recipients)
+    }
+    
+    // MARK: - Export Function
+    
+    
+    func sendToParse(track: NSString, artist:NSString, album:NSString, artwork:MPMediaItemArtwork, songURL:NSURL) -> Void {
+        
+        print(track)
+        print(artist)
+        print(album)
+        print(songURL)
+        
+        //var artworkData: NSData
+        //var audioData: NSData
+        
+        let artworkImageContent :UIImage
+        artworkImageContent = artwork.imageWithSize(CGSizeMake(300, 300))!
+        //artworkData = UIImagePNGRepresentation(artworkImageContent)
+        
+        let artworkData = NSData(data: UIImagePNGRepresentation(artworkImageContent)!)
+        let audioData = NSData(contentsOfURL: songURL)
+        
+        
+        
+        let imageFile = PFFile(name: "image.png", data: artworkData)
+        let soundFile = PFFile(name: "song.m4a", data: audioData!)
+        let message = PFObject(className: "Messages")
+        
+        message["file"] = soundFile
+        message["filetype"] = "music.mp3"
+        message["artwork"] = imageFile
+
+        message.setObject(track, forKey: "track")
+        message.setObject(artist, forKey: "artist")
+        message.setObject(album, forKey: "album")
+        message.setObject(self.recipients, forKey: "recipientsIds")
+        message.setObject(self.recipients, forKey: "recipientsIds2")
+        message.setObject((self.currentUser?.objectId)!, forKey: "senderId")
+        message.setObject((self.currentUser?.username)!, forKey: "userName")
+        
+        
+        message.saveInBackgroundWithBlock { (succeded : Bool, error : NSError?) in
+            if succeded {
+                print("success")
+            }
+            else{
+                print(error)
+            }
+        }
     }
     
     // MARK: - Navigation

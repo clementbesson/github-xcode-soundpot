@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB3EAC711D09339900BF28A3 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC701D09339900BF28A3 /* SendViewController.swift */; };
+		EB3EAC741D093E3B00BF28A3 /* UploadLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */; };
 		EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440A1D08CD4300384396 /* SettingsViewController.swift */; };
 		EBA4440D1D08D79A00384396 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440C1D08D79A00384396 /* FriendsViewController.swift */; };
 		EBA4440F1D08DBF800384396 /* EditFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */; };
@@ -42,7 +43,6 @@
 		EBEBD8351D088BC4002EB597 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8341D088BC4002EB597 /* SongViewController.swift */; };
 		EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8361D089204002EB597 /* HistoryViewControler.swift */; };
 		EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */; };
-		EBEBD83C1D08ACA1002EB597 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */; };
 		EBEBD83E1D08AD53002EB597 /* TrackInfoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		EB3EAC701D09339900BF28A3 /* SendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		EB3EAC721D093E2400BF28A3 /* UploadLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadLibrary.h; sourceTree = "<group>"; };
+		EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadLibrary.m; sourceTree = "<group>"; };
 		EBA4440A1D08CD4300384396 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EBA4440C1D08D79A00384396 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFriendsViewController.swift; sourceTree = "<group>"; };
@@ -94,8 +96,6 @@
 		EBEBD8341D088BC4002EB597 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EBEBD8361D089204002EB597 /* HistoryViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewControler.swift; sourceTree = "<group>"; };
 		EBEBD8381D089D5E002EB597 /* HistorySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySongViewController.swift; sourceTree = "<group>"; };
-		EBEBD83A1D08ACA1002EB597 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../HomeViewController.h; sourceTree = "<group>"; };
-		EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ../HomeViewController.m; sourceTree = "<group>"; };
 		EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoLibrary.m; sourceTree = "<group>"; };
 		EBEBD83F1D08ADBC002EB597 /* SounPot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SounPot-Bridging-Header.h"; sourceTree = "<group>"; };
 		EBEBD8401D08AE7D002EB597 /* TrackInfoLibray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoLibray.h; sourceTree = "<group>"; };
@@ -156,9 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				EBD3BED81D0750D1002A4045 /* Main.storyboard */,
-				EBEBD83A1D08ACA1002EB597 /* HomeViewController.h */,
-				EBEBD83B1D08ACA1002EB597 /* HomeViewController.m */,
 				EBEBD83F1D08ADBC002EB597 /* SounPot-Bridging-Header.h */,
+				EB3EAC721D093E2400BF28A3 /* UploadLibrary.h */,
+				EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */,
 				EBEBD8401D08AE7D002EB597 /* TrackInfoLibray.h */,
 				EBEBD83D1D08AD53002EB597 /* TrackInfoLibrary.m */,
 				EBD3BED11D0750D1002A4045 /* AppDelegate.swift */,
@@ -348,7 +348,7 @@
 				EBEBD8391D089D5E002EB597 /* HistorySongViewController.swift in Sources */,
 				EBEBD8291D07B8B5002EB597 /* HomeViewController.swift in Sources */,
 				EB3EAC711D09339900BF28A3 /* SendViewController.swift in Sources */,
-				EBEBD83C1D08ACA1002EB597 /* HomeViewController.m in Sources */,
+				EB3EAC741D093E3B00BF28A3 /* UploadLibrary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
