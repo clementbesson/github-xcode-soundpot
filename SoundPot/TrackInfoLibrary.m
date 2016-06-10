@@ -10,8 +10,7 @@
 
 @implementation TrackingInfoLibrary
 
-- (void) someMethod {
-    NSLog(@"SomeMethod Ran");
+- (void) getNowPlayingInfo {
     MPMusicPlayerController *MyPlayer= [[MPMusicPlayerController alloc] init ];
     MPMediaItem * Now = [MyPlayer nowPlayingItem];
     if (Now==NULL) {
@@ -26,12 +25,5 @@
         _artwork=[Now valueForProperty:MPMediaItemPropertyArtwork];
     }
 }
-
-
-- (void)getNowPlayingInfo
-{
-
-}
-
 
 @end

@@ -134,6 +134,12 @@
                                     <action selector="sendButton:" destination="3Eq-Sb-mgf" eventType="touchUpInside" id="Klo-Av-OHu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="N8I-h0-CqG">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="187" y="307" width="20" height="20"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -145,6 +151,7 @@
                                 <exclude reference="Ft3-uW-iUO"/>
                                 <exclude reference="Fh4-vA-dsL"/>
                                 <exclude reference="4xu-Lz-Cvi"/>
+                                <exclude reference="N8I-h0-CqG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -156,6 +163,7 @@
                                 <include reference="Ft3-uW-iUO"/>
                                 <include reference="Fh4-vA-dsL"/>
                                 <include reference="4xu-Lz-Cvi"/>
+                                <include reference="N8I-h0-CqG"/>
                             </mask>
                         </variation>
                     </view>
@@ -608,7 +616,7 @@
                                     <rect key="frame" x="137" y="219" width="100" height="100"/>
                                 </variation>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
                                 <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -619,7 +627,7 @@
                                     <rect key="frame" x="64" y="385" width="247" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
                                 <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -627,7 +635,7 @@
                                     <rect key="frame" x="64" y="352" width="247" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-fP-hNX">
                                 <rect key="frame" x="168" y="0.0" width="42" height="30"/>
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1007,10 +1015,10 @@
         <image name="settings-icon.png" width="212" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0q6-eq-x1n"/>
-        <segue reference="TK3-Zs-Ho1"/>
-        <segue reference="DE9-1A-Sbe"/>
         <segue reference="v3u-Ld-Gu9"/>
-        <segue reference="ClJ-9L-qpu"/>
+        <segue reference="DE9-1A-Sbe"/>
+        <segue reference="0q6-eq-x1n"/>
+        <segue reference="J4U-MB-m02"/>
+        <segue reference="zK6-B2-Hqg"/>
     </inferredMetricsTieBreakers>
 </document>

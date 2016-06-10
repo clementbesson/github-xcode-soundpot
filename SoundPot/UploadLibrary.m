@@ -11,8 +11,7 @@
 
 @implementation UploadLibrary
 
-- (void) someMethod {
-    NSLog(@"SomeMethod Ran");
+- (void) getTrackData {
     MPMusicPlayerController *MyPlayer= [[MPMusicPlayerController alloc] init ];
     MPMediaItem * Now = [MyPlayer nowPlayingItem];
     if (Now==NULL) {
@@ -24,9 +23,6 @@
         _albumValue=[Now valueForProperty:MPMediaItemPropertyAlbumTitle];
         _artwork=[Now valueForProperty:MPMediaItemPropertyArtwork];
         NSURL *songURL=[Now valueForProperty:MPMediaItemPropertyAssetURL];
-        
-        
-        
         NSString *fileName = [NSString stringWithFormat:@"%@", @"exported.m4a"]; // Creating a filename
         NSString* exportFileURLString=[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]; // Creating the exportURLString from filename and Temporary Directory
         NSURL *exportFileURL = [NSURL fileURLWithPath:exportFileURLString]; // Creating the exportURL from exportURLString
@@ -67,12 +63,6 @@
                     NSLog (@"AVAssetExportSessionStatusCompleted");
                     _audioURL = exportFileURL;
                     NSLog(@"Audio Url=%@",_audioURL);
-                    
-                    //self.audioData = [NSData dataWithContentsOfURL:audioUrl];
-                    
-                    
-                    //[self sendToParse:track artistname:artist albmuname:album artwork:artwork];
-                    
                     break;
                     
                 }
@@ -83,12 +73,6 @@
             }
         }];
     }
-}
-
-
-- (void)getNowPlayingInfo
-{
-    
 }
 
 void myDeleteFile (NSString* path){

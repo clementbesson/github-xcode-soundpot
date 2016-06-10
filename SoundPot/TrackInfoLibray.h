@@ -11,13 +11,12 @@
 
 @interface TrackingInfoLibrary : NSObject
 
-@property (strong, nonatomic) id someProperty;
+//@property (strong, nonatomic) id someProperty;
 @property (readonly) NSString *trackValue;
 @property (readonly) NSString *artistValue;
 @property (readonly) NSString *albumValue;
 @property (readonly) MPMediaItemArtwork *artwork;
 
-- (void) someMethod;
 - (void) getNowPlayingInfo;
 
 @end

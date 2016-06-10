@@ -42,7 +42,7 @@ class FriendsViewController: UITableViewController {
             query = self.friendsRelation.query()
             query.orderByAscending("username")
             query.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]!?, error: NSError?) -> Void in
                 
                 if error == nil {
                     // The find succeeded.

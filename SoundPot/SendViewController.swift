@@ -21,20 +21,19 @@ class SendViewController: UITableViewController {
     var recipients : NSMutableArray = []
     
     @IBAction func sendButton(sender: UIBarButtonItem) {
-        let instanceOfCustomObject: UploadLibrary = UploadLibrary()
-        instanceOfCustomObject.someProperty = "Hello World"
-        instanceOfCustomObject.someMethod()
+        let instanceOfUploadObject: UploadLibrary = UploadLibrary()
+        instanceOfUploadObject.getTrackData()
         
        // let audioURL =
-        let artwork = instanceOfCustomObject.artwork
-        let track = instanceOfCustomObject.trackValue
-        let artist = instanceOfCustomObject.artistValue
-        let album = instanceOfCustomObject.albumValue
+        let artwork = instanceOfUploadObject.artwork
+        let track = instanceOfUploadObject.trackValue
+        let artist = instanceOfUploadObject.artistValue
+        let album = instanceOfUploadObject.albumValue
         
         let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) {
-            let songURL = instanceOfCustomObject.audioURL
-            self.sendToParse(track, artist: artist, album: album, artwork: instanceOfCustomObject.artwork, songURL: songURL)
+            let songURL = instanceOfUploadObject.audioURL
+            self.sendToParse(track, artist: artist, album: album, artwork: instanceOfUploadObject.artwork, songURL: songURL)
         }
         //let artworkImage.image = artworkImageContent
    
@@ -125,17 +124,12 @@ class SendViewController: UITableViewController {
     }
     
     // MARK: - Export Function
-    
-    
     func sendToParse(track: NSString, artist:NSString, album:NSString, artwork:MPMediaItemArtwork, songURL:NSURL) -> Void {
         
         print(track)
         print(artist)
         print(album)
         print(songURL)
-        
-        //var artworkData: NSData
-        //var audioData: NSData
         
         let artworkImageContent :UIImage
         artworkImageContent = artwork.imageWithSize(CGSizeMake(300, 300))!
@@ -163,6 +157,24 @@ class SendViewController: UITableViewController {
         message.saveInBackgroundWithBlock { (succeded : Bool, error : NSError?) in
             if succeded {
                 print("success")
+                
+                
+                let pushQuery = PFInstallation.query()!
+                pushQuery.whereKey("user", equalTo: self.recipients) //friend is a PFUser object
+                let push = PFPush()
+                push.setQuery(pushQuery)
+                push.setMessage("New message from \(PFUser.currentUser()!.username!)")
+                push.sendPushInBackground()
+                
+                /*
+                let messageRecipients = message.objectForKey("recipientsIds")
+                let pushQuery: PFQuery = PFInstallation.query()!
+                pushQuery.whereKey("userId", containedIn: messageRecipients as! [AnyObject])
+                let push:PFPush = PFPush()
+                push.setQuery(pushQuery)
+                push.setMessage(String(((self.currentUser?.objectForKey("username"))! as! String) + " sent you a message"))
+                push.sendPushInBackground()
+                print("Push Sent")*/
             }
             else{
                 print(error)

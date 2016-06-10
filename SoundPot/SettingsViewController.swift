@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     // MARK: Properties
     @IBAction func logoutButton(sender: UIButton) {
         PFUser.logOut()
+        PFInstallation.currentInstallation().removeObjectForKey("userId")
+        PFInstallation.currentInstallation().saveInBackground()
     }
     
     override func viewDidAppear(animated: Bool) {
