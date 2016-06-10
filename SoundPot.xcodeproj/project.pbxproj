@@ -21,6 +21,7 @@
 		EB3DFDA11D0A1A83006BFCAE /* logout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3DFD9F1D0A1A83006BFCAE /* logout-icon.png */; };
 		EB3DFDA31D0A1BF0006BFCAE /* logo-soundpot-2.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3DFDA21D0A1BF0006BFCAE /* logo-soundpot-2.png */; };
 		EB3DFDA51D0A1DFB006BFCAE /* blurry.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3DFDA41D0A1DFB006BFCAE /* blurry.png */; };
+		EB3DFDA71D0A27C8006BFCAE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3DFDA61D0A27C8006BFCAE /* SignUpViewController.swift */; };
 		EB3EAC711D09339900BF28A3 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC701D09339900BF28A3 /* SendViewController.swift */; };
 		EB3EAC741D093E3B00BF28A3 /* UploadLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */; };
 		EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440A1D08CD4300384396 /* SettingsViewController.swift */; };
@@ -85,6 +86,7 @@
 		EB3DFD9F1D0A1A83006BFCAE /* logout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-icon.png"; sourceTree = "<group>"; };
 		EB3DFDA21D0A1BF0006BFCAE /* logo-soundpot-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-soundpot-2.png"; sourceTree = "<group>"; };
 		EB3DFDA41D0A1DFB006BFCAE /* blurry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurry.png; sourceTree = "<group>"; };
+		EB3DFDA61D0A27C8006BFCAE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB3EAC701D09339900BF28A3 /* SendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		EB3EAC721D093E2400BF28A3 /* UploadLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadLibrary.h; sourceTree = "<group>"; };
 		EB3EAC731D093E3B00BF28A3 /* UploadLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadLibrary.m; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				EBEBD8321D086AA7002EB597 /* PlaylistViewController.swift */,
 				EB3EAC701D09339900BF28A3 /* SendViewController.swift */,
 				EBA4440A1D08CD4300384396 /* SettingsViewController.swift */,
+				EB3DFDA61D0A27C8006BFCAE /* SignUpViewController.swift */,
 				EBEBD8341D088BC4002EB597 /* SongViewController.swift */,
 				EBEBD82D1D07C57D002EB597 /* Song.swift */,
 				EBD3BEF61D076D81002A4045 /* User.swift */,
@@ -402,6 +405,7 @@
 				EBEBD83E1D08AD53002EB597 /* TrackInfoLibrary.m in Sources */,
 				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
 				EBEBD8311D07D5A1002EB597 /* InboxViewController.swift in Sources */,
+				EB3DFDA71D0A27C8006BFCAE /* SignUpViewController.swift in Sources */,
 				EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */,
 				EBD3BEF71D076D81002A4045 /* User.swift in Sources */,
 				EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */,

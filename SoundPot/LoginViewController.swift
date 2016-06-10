@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
         
-        let user = User(username: usernameTextField.text!, password: passwordTextField.text!)
+        let user = User(username: usernameTextField.text!, password: passwordTextField.text!, email: "")
         
         if user?.username == "" || user?.password == "" {
             // show alert if invalid credentials

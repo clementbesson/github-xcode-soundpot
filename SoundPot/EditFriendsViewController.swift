@@ -37,7 +37,9 @@ class EditFriendsViewController: UITableViewController {
         imageView.image = image
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
-        self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
+        //self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
+        
+        self.friendsRelation = (self.currentUser?.relationForKey("friendsRelation"))!
         //self.friends = self.friendsRelation
     }
     
@@ -117,31 +119,35 @@ class EditFriendsViewController: UITableViewController {
         else {
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1)
         }
-        
-
-        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        let user = self.users.objectAtIndex(indexPath.row)
+        let user: PFUser = self.users.objectAtIndex(indexPath.row) as! PFUser
+        var rel = currentUser?.relationForKey("friendsRelation")
+        print("Before")
+        print(rel)
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell.accessoryType == .Checkmark {
+                rel!.removeObject(user)
                 cell.accessoryType = .None
-                //friendsRelation.removeObject(user as! PFObject)
             } else {
+                rel!.addObject(user)
                 cell.accessoryType = .Checkmark
-                //friendsRelation.addObject(user as! PFObject)
             }
         }
-       // currentUser?.saveInBackgroundWithBlock({(succeded, error) in
-            //if (error != nil) {
-            //    print(error)
-          //  }
-        //})
     }
     
+    @IBAction func saveBarButton(sender: UIBarButtonItem) {
+        currentUser!.saveInBackgroundWithBlock({ (succeded: Bool, error: NSError?) in
+            if succeded {
+                print("success")
+                print(self.currentUser?.objectId!)
+            }
+        })
+        self.performSegueWithIdentifier("SaveToSettings", sender: self)
+    }
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
@@ -152,12 +158,10 @@ class EditFriendsViewController: UITableViewController {
         var testValue = false
         for parseUser in self.friends {
             if user.objectId == parseUser.objectId {
-                print("is friend")
                 testValue = true
                 break
             }
             else {
-                print ("is not friend")
                 testValue = false
             }
         }

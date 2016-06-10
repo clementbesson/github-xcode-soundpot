@@ -12,12 +12,14 @@ class User {
     // MARK: Properties
     var username: String = ""
     var password: String = ""
+    var email: String = ""
     
     // MARK: Initialization
-    init?(username: String, password: String) {
+    init?(username: String, password: String, email: String) {
         // Initialize stored properties.
         self.username = username
         self.password = password
+        self.email = email
         
         // Initialization should fail if there is no username nor password
         //if username == "" || password.isEmpty {

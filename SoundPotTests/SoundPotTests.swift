@@ -25,7 +25,7 @@ class SoundPotTests: XCTestCase {
     
     func testUserInitialization (){
         // Success case.
-        let potentialUser = User(username: "Clem", password: "")
+        let potentialUser = User(username: "Clem", password: "", email: "")
         XCTAssertNotNil(potentialUser)
     }
 }

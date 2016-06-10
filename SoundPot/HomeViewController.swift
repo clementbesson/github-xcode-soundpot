@@ -66,7 +66,6 @@ class HomeViewController: UIViewController {
                 print("Successfully retrieved \(objects!.count) messages.")
                 // Do something with the found objects
                 self.inbox.text = String( objects!.count)
-                print(String( objects!.count))
                 
                 timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
                 self.updateNowPlayingInfo()
