@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        //UIApplication.sharedApplication().statusBarStyle = .BlackOpaque
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
             $0.applicationId = "3Y341Sui1yO5WCOFDXc8SmJjJrVKJVzMeh4N48pE"
@@ -27,31 +26,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
-        /*let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        
-        
-        if let launchOptions = launchOptions as? [String : AnyObject] {
-            if let notificationDictionary = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject] {
-                self.application(application, didReceiveRemoteNotification: notificationDictionary)
-            }
-        }*/
+        // calls app delegate's method: didRegisterForRemoteNotificationsWithDeviceToken and didReceiveRemoteNotification
+        let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
         return true
     }
     
     // MARK - Get the app ready for notifications
+    
+    // If the registration is successful, the callback method application:didRegisterForRemoteNotificationsWithDeviceToken: in the application delegate will be executed
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        /*let installation = PFInstallation.currentInstallation()
-        installation["user"] = PFUser.currentUser()
+        let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()*/
+        installation.channels = ["global"]
+        installation.saveInBackground()
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        //PFPush.handlePush(userInfo)
-    }
+        // Ask Parse to display a basic alert message based on the notification content
+        PFPush.handlePush(userInfo)    }
 
     
     func applicationWillResignActive(application: UIApplication) {

@@ -334,6 +334,11 @@
 					EBD3BECB1D0750D1002A4045 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = GZASV253E2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					EBD3BEE31D0750D1002A4045 = {
 						CreatedOnToolsVersion = 6.4;
@@ -555,6 +560,7 @@
 				);
 				INFOPLIST_FILE = SoundPot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ProjetXDevTeam.ProjetX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Clement/SoundPot/SoundPot/SounPot-Bridging-Header.h";
@@ -576,6 +582,7 @@
 				);
 				INFOPLIST_FILE = SoundPot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ProjetXDevTeam.ProjetX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Clement/SoundPot/SoundPot/SounPot-Bridging-Header.h";
