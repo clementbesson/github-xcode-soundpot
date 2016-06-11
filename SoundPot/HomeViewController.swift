@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
     }
-
+    
     @IBAction func historyButton(sender: UIButton) {
         timer.invalidate()
     }
@@ -57,13 +57,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logoImage.frame = CGRectMake(0, 0, 120, 120)
-        logoImage.center = self.artworkImage.center
+        logoImage.center = self.view.center
         logoImage.image = UIImage(named: "logo-soundpot-2.png")
         logoImage.backgroundColor = UIColor.blackColor()
         logoImage.clipsToBounds = true
         logoImage.layer.cornerRadius = 10
         logoImage.hidden = true
-       
+        self.view.addSubview(logoImage)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,22 +74,22 @@ class HomeViewController: UIViewController {
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
             query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // Do something with the found objects
-                self.inbox.text = String( objects!.count)
+                (objects: [PFObject]?, error: NSError?) -> Void in
                 
-                timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
-                self.updateNowPlayingInfo()
-                self.actInd.stopAnimating()
-                self.loadingView.hidden = true
-                
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
+                if error == nil {
+                    // Do something with the found objects
+                    self.inbox.text = String( objects!.count)
+                    
+                    timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
+                    self.updateNowPlayingInfo()
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden = true
+                    
+                } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
             }
-        }
         }
         
     }
@@ -109,7 +109,7 @@ class HomeViewController: UIViewController {
             self.presentViewController(vc, animated: false, completion: nil)
         }
     }
-
+    
     // Gets iOS device player information
     func updateNowPlayingInfo(){
         // if somthing is being played
@@ -129,7 +129,7 @@ class HomeViewController: UIViewController {
         }
         else {
             self.artworkImage.image = nil
-            showLogo(self.view)
+            showLogo(self.logoImage)
         }
     }
     
@@ -154,7 +154,7 @@ class HomeViewController: UIViewController {
     }
     
     func showLogo(uiView: UIView) {
-
+        
         //uiView.addSubview(logoImage)
         uiView.hidden = false
         // starts new thread for UI effect
@@ -163,17 +163,17 @@ class HomeViewController: UIViewController {
     }
     
     /*func changeAlpha(uiImage: UIImageView) {
-        var increment:CGFloat = 0.1
-        while uiImage.hidden == false {
-            if uiImage.alpha == 1 {
-                increment = 0.1
-            }
-            else {
-                increment = -0.1
-            }
-            uiImage.alpha = uiImage.alpha + increment
-        }
-    }*/
+     var increment:CGFloat = 0.1
+     while uiImage.hidden == false {
+     if uiImage.alpha == 1 {
+     increment = 0.1
+     }
+     else {
+     increment = -0.1
+     }
+     uiImage.alpha = uiImage.alpha + increment
+     }
+     }*/
     
 }
 
