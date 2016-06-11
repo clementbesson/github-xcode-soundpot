@@ -16,6 +16,8 @@ class PlaylistViewController: UITableViewController {
     var messages = NSArray()
     var selectedFriend = PFObject(className: "Users")
     var song = PFObject(className: "Messages")
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -27,13 +29,12 @@ class PlaylistViewController: UITableViewController {
             query.orderByAscending("createdAt")
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
-                
                 if error == nil {
-                    // The find succeeded.
+                    // Query succeeded
                     self.messages = objects!
                     self.tableView.reloadData()
-                    print("track is")
-                    print(self.messages.objectAtIndex(0).objectForKey("track"))
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden = true
                 }
                     
                 else {
@@ -46,19 +47,14 @@ class PlaylistViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        showActivityIndicatory(self.view)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        let imageView = UIImageView(frame: self.view.frame)
-        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
-        //let imageView = UIImageView(frame: <#T##CGRect#>)
-        
-        //let image = UIImage(named: "background-noglow.png")!
+        let imageView = UIImageView(frame: self.tableView.frame)
         let image = UIImage(named: "background-noglow.png")!
         imageView.image = image
-        self.view.addSubview(imageView)
-        self.view.sendSubviewToBack(imageView)
-
+        self.tableView.addSubview(imageView)
+        self.tableView.sendSubviewToBack(imageView)
     }
     
     // MARK: - Table
@@ -95,5 +91,24 @@ class PlaylistViewController: UITableViewController {
             let songvc = segue.destinationViewController as! HistorySongViewController
             songvc.selectedSong = self.song
         }
+    }
+    
+    // MARK - UI
+    func showActivityIndicatory(uiView: UIView) {
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+                                    loadingView.frame.size.height / 2);
+        actInd.hidesWhenStopped = true
+        loadingView.addSubview(actInd)
+        uiView.addSubview(loadingView)
+        actInd.startAnimating()
     }
 }

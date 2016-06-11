@@ -19,42 +19,19 @@ class SendViewController: UITableViewController {
     let currentUser = PFUser.currentUser()
     var friend = PFObject(className: "Users")
     var recipients : NSMutableArray = []
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
+
     
-    @IBAction func sendButton(sender: UIBarButtonItem) {
-        let instanceOfUploadObject: UploadLibrary = UploadLibrary()
-        instanceOfUploadObject.getTrackData()
-        
-       // let audioURL =
-        let artwork = instanceOfUploadObject.artwork
-        let track = instanceOfUploadObject.trackValue
-        let artist = instanceOfUploadObject.artistValue
-        let album = instanceOfUploadObject.albumValue
-        
-        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            let songURL = instanceOfUploadObject.audioURL
-            self.sendToParse(track, artist: artist, album: album, artwork: instanceOfUploadObject.artwork, songURL: songURL)
-        }
-        //let artworkImage.image = artworkImageContent
-   
-    }
-    
-    //var selectedTrack = NSArray =
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.view.frame)
-        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
-        //let imageView = UIImageView(frame: <#T##CGRect#>)
-        
-        //let image = UIImage(named: "background-noglow.png")!
         let image = UIImage(named: "background-noglow.png")!
         imageView.image = image
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
-        //self.navigationController.view.backgroundColor = UIColor(white: 0, alpha: 0)
         self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
     }
     
@@ -68,7 +45,6 @@ class SendViewController: UITableViewController {
             query.orderByAscending("username")
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
-                
                 if error == nil {
                     // The find succeeded.
                     self.friends = objects!
@@ -125,15 +101,8 @@ class SendViewController: UITableViewController {
     
     // MARK: - Export Function
     func sendToParse(track: NSString, artist:NSString, album:NSString, artwork:MPMediaItemArtwork, songURL:NSURL) -> Void {
-        
-        print(track)
-        print(artist)
-        print(album)
-        print(songURL)
-        
         let artworkImageContent :UIImage
         artworkImageContent = artwork.imageWithSize(CGSizeMake(300, 300))!
-        //artworkData = UIImagePNGRepresentation(artworkImageContent)
         
         let artworkData = NSData(data: UIImagePNGRepresentation(artworkImageContent)!)
         let audioData = NSData(contentsOfURL: songURL)
@@ -152,19 +121,18 @@ class SendViewController: UITableViewController {
         message.setObject(self.recipients, forKey: "recipientsIds2")
         message.setObject((self.currentUser?.objectId)!, forKey: "senderId")
         message.setObject((self.currentUser?.username)!, forKey: "userName")
-        
-        
         message.saveInBackgroundWithBlock { (succeded : Bool, error : NSError?) in
             if succeded {
-                print("success")
-                
-                
-                let pushQuery = PFInstallation.query()!
+                /*let pushQuery = PFInstallation.query()!
                 pushQuery.whereKey("user", equalTo: self.recipients) //friend is a PFUser object
                 let push = PFPush()
                 push.setQuery(pushQuery)
                 push.setMessage("New message from \(PFUser.currentUser()!.username!)")
-                push.sendPushInBackground()
+                push.sendPushInBackground()*/
+                
+                self.actInd.stopAnimating()
+                self.loadingView.hidden = true
+                self.performSegueWithIdentifier("SendToHome", sender: self)
                 
                 /*
                 let messageRecipients = message.objectForKey("recipientsIds")
@@ -177,18 +145,51 @@ class SendViewController: UITableViewController {
                 print("Push Sent")*/
             }
             else{
-                print(error)
+                // show alert if not song being played
+                let sendAlert = UIAlertController(title: "Network Error...", message: "We could not send your track :(", preferredStyle: UIAlertControllerStyle.Alert)
+                sendAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.performSegueWithIdentifier("SendToHome", sender: self)
             }
+        }
+    }
+    
+    @IBAction func sendButton(sender: UIBarButtonItem) {
+        showActivityIndicatory(self.view)
+        let instanceOfUploadObject: UploadLibrary = UploadLibrary()
+        instanceOfUploadObject.getTrackData()
+        // get song metadata
+        let artwork = instanceOfUploadObject.artwork
+        let track = instanceOfUploadObject.trackValue
+        let artist = instanceOfUploadObject.artistValue
+        let album = instanceOfUploadObject.albumValue
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            let songURL = instanceOfUploadObject.audioURL
+            self.sendToParse(track, artist: artist, album: album, artwork: artwork, songURL: songURL)
+            
         }
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "HistoryToPlaylist") {
 
-            
-            
-        }
     }
-}
+    
+    // MARK - UI
+    func showActivityIndicatory(uiView: UIView) {
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+                                    loadingView.frame.size.height / 2);
+        actInd.hidesWhenStopped = true
+        loadingView.addSubview(actInd)
+        uiView.addSubview(loadingView)
+        actInd.startAnimating()
+    }}
 

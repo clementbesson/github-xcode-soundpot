@@ -16,40 +16,33 @@ class EditFriendsViewController: UITableViewController {
     // MARK: Properties
     var friendsRelation = PFRelation()
     var allUser = PFUser()
-    
     var users :NSArray = []
     var friends : NSArray = []
     let currentUser = PFUser.currentUser()
     var friend = PFObject(className: "Users")
-    
-    //var selectedTrack = NSArray =
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.view.frame)
-        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
-        //let imageView = UIImageView(frame: <#T##CGRect#>)
-        
-        //let image = UIImage(named: "background-noglow.png")!
         let image = UIImage(named: "background-noglow.png")!
         imageView.image = image
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
-        //self.friendsRelation = (currentUser?.objectForKey("friendsRelation"))! as! PFRelation
-        
         self.friendsRelation = (self.currentUser?.relationForKey("friendsRelation"))!
-        //self.friends = self.friendsRelation
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         if (currentUser != nil){
             // Get messages from server
+            showActivityIndicatory(self.view)
             var query: PFQuery = PFUser.query()!
-            
-            //query = self.allUser.query()
             query.orderByAscending("username")
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
@@ -57,16 +50,15 @@ class EditFriendsViewController: UITableViewController {
                     // The find succeeded.
                     self.users = objects!
                     self.tableView.reloadData()
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden = true
                 }
                     
                 else {
                     print(error)
                 }
             }
-            
-            
-          
-            //var friendQuery = PFQuery(className: "User")
+
             query = PFQuery(className: "User")
             query = self.friendsRelation.query()
             query.orderByAscending("username")
@@ -125,9 +117,7 @@ class EditFriendsViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let user: PFUser = self.users.objectAtIndex(indexPath.row) as! PFUser
-        var rel = currentUser?.relationForKey("friendsRelation")
-        print("Before")
-        print(rel)
+        let rel = currentUser?.relationForKey("friendsRelation")
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell.accessoryType == .Checkmark {
                 rel!.removeObject(user)
@@ -140,17 +130,18 @@ class EditFriendsViewController: UITableViewController {
     }
     
     @IBAction func saveBarButton(sender: UIBarButtonItem) {
+        self.actInd.startAnimating()
+        self.loadingView.hidden = false
         currentUser!.saveInBackgroundWithBlock({ (succeded: Bool, error: NSError?) in
             if succeded {
-                print("success")
-                print(self.currentUser?.objectId!)
+                self.actInd.stopAnimating()
+                self.loadingView.hidden = true
+                self.performSegueWithIdentifier("SaveToSettings", sender: self)
             }
         })
-        self.performSegueWithIdentifier("SaveToSettings", sender: self)
     }
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
     }
     
     // MARK - Friend Test
@@ -166,5 +157,24 @@ class EditFriendsViewController: UITableViewController {
             }
         }
         return testValue
+    }
+    
+    // MARK - UI
+    func showActivityIndicatory(uiView: UIView) {
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+                                    loadingView.frame.size.height / 2);
+        actInd.hidesWhenStopped = true
+        loadingView.addSubview(actInd)
+        uiView.addSubview(loadingView)
+        actInd.startAnimating()
     }
 }

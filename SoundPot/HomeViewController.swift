@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var inbox: UILabel!
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     var loadingView: UIView = UIView()
+    var logoView: UIView = UIView()
+    var logoImage: UIImageView = UIImageView()
+    //var backgroundThread: NSThread = NSThread()
     
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
@@ -37,10 +40,9 @@ class HomeViewController: UIViewController {
     }
     @IBAction func sendButton(sender: AnyObject) {
         timer.invalidate()
-        let instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
-        //instanceOfCustomObject.someProperty = "Hello World"
-        instanceOfCustomObject.getNowPlayingInfo()
-        if (instanceOfCustomObject.trackValue != "No song currently played"){
+        let instanceOfTrackObject: TrackingInfoLibrary = TrackingInfoLibrary()
+        instanceOfTrackObject.getNowPlayingInfo()
+        if (instanceOfTrackObject.albumValue != "No song currently played..."){
             self.performSegueWithIdentifier("HomeToSend", sender: self)
         }
         else {
@@ -54,14 +56,19 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoImage.frame = CGRectMake(0, 0, 120, 120)
+        logoImage.center = self.artworkImage.center
+        logoImage.image = UIImage(named: "logo-soundpot-2.png")
+        logoImage.backgroundColor = UIColor.blackColor()
+        logoImage.clipsToBounds = true
+        logoImage.layer.cornerRadius = 10
+        logoImage.hidden = true
        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         showActivityIndicatory(self.view)
-        
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
         if (currentUser != nil) {
@@ -70,8 +77,6 @@ class HomeViewController: UIViewController {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) messages.")
                 // Do something with the found objects
                 self.inbox.text = String( objects!.count)
                 
@@ -98,11 +103,7 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(true)
         // check is user is cached and goes to the login page otherwise
         let currentUser = PFUser.currentUser()
-        print(currentUser?.username)
-        if (currentUser != nil) {
-            print(currentUser!.username)
-        }
-        else {
+        if (currentUser == nil) {
             let storyboard = UIStoryboard(name: "Main", bundle:nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("login")
             self.presentViewController(vc, animated: false, completion: nil)
@@ -112,31 +113,38 @@ class HomeViewController: UIViewController {
     // Gets iOS device player information
     func updateNowPlayingInfo(){
         // if somthing is being played
-        let instanceOfCustomObject: TrackingInfoLibrary = TrackingInfoLibrary()
-        //instanceOfCustomObject.someProperty = "Hello World"
-        instanceOfCustomObject.getNowPlayingInfo()
+        let instanceOfTrackObject: TrackingInfoLibrary = TrackingInfoLibrary()
+        instanceOfTrackObject.getNowPlayingInfo()
         
-        self.track.text = instanceOfCustomObject.trackValue
-        self.artist.text = instanceOfCustomObject.artistValue
-        self.album.text = instanceOfCustomObject.albumValue
-        if (instanceOfCustomObject.trackValue != "No song currently played"){
+        self.track.text = instanceOfTrackObject.trackValue
+        self.artist.text = instanceOfTrackObject.artistValue
+        self.album.text = instanceOfTrackObject.albumValue
+        
+        if (instanceOfTrackObject.albumValue != "No song currently played..."){
             var artworkImageContent :UIImage
-            artworkImageContent = instanceOfCustomObject.artwork.imageWithSize(CGSizeMake(300, 300))!
+            artworkImageContent = instanceOfTrackObject.artwork.imageWithSize(CGSizeMake(300, 300))!
             self.artworkImage.image = artworkImageContent
+            self.logoImage.hidden = true
+            //backgroundThread.cancel()
+        }
+        else {
+            self.artworkImage.image = nil
+            showLogo(self.view)
         }
     }
     
-    
+    // MARK - UI
     func showActivityIndicatory(uiView: UIView) {
         loadingView.frame = CGRectMake(0, 0, 80, 80)
-        loadingView.center = uiView.center
+        loadingView.center = self.view.center
         loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
-        
         actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
         actInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.WhiteLarge
+        
+        //actInd.center  = artworkImage.center
         actInd.center = CGPointMake(loadingView.frame.size.width / 2,
                                     loadingView.frame.size.height / 2);
         actInd.hidesWhenStopped = true
@@ -144,6 +152,29 @@ class HomeViewController: UIViewController {
         uiView.addSubview(loadingView)
         actInd.startAnimating()
     }
+    
+    func showLogo(uiView: UIView) {
+
+        //uiView.addSubview(logoImage)
+        uiView.hidden = false
+        // starts new thread for UI effect
+        //backgroundThread = NSThread(target: self, selector: #selector(changeAlpha), object: self.logoImage)
+        //backgroundThread.start()
+    }
+    
+    /*func changeAlpha(uiImage: UIImageView) {
+        var increment:CGFloat = 0.1
+        while uiImage.hidden == false {
+            if uiImage.alpha == 1 {
+                increment = 0.1
+            }
+            else {
+                increment = -0.1
+            }
+            uiImage.alpha = uiImage.alpha + increment
+        }
+    }*/
+    
 }
 
 

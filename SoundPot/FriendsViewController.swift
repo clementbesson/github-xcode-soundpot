@@ -18,6 +18,8 @@ class FriendsViewController: UITableViewController {
     var friends :NSArray = []
     let currentUser = PFUser.currentUser()
     var friend = PFObject(className: "Users")
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
     
     //var selectedTrack = NSArray =
     override func viewDidLoad() {
@@ -35,6 +37,7 @@ class FriendsViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        showActivityIndicatory(self.view)
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             // Get messages from server
@@ -48,6 +51,8 @@ class FriendsViewController: UITableViewController {
                     // The find succeeded.
                     self.friends = objects!
                     self.tableView.reloadData()
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden=true
                 }
                     
                 else {
@@ -89,6 +94,25 @@ class FriendsViewController: UITableViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
 
+    }
+    
+    // MARK - UI
+    func showActivityIndicatory(uiView: UIView) {
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+                                    loadingView.frame.size.height / 2);
+        actInd.hidesWhenStopped = true
+        loadingView.addSubview(actInd)
+        uiView.addSubview(loadingView)
+        actInd.startAnimating()
     }
 }
 

@@ -28,7 +28,7 @@
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="22" width="400" height="400"/>
+                                    <rect key="frame" x="0.0" y="22" width="380" height="400"/>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurry.png" translatesAutoresizingMaskIntoConstraints="NO" id="tIg-hK-jSK">
@@ -555,10 +555,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="3Eq-Sb-mgf" kind="presentation" identifier="SendToHome" id="OAf-sp-DOu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3no-YU-9Cz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349.5" y="-1143.75"/>
+            <point key="canvasLocation" x="301.5" y="-1307.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R2J-AP-VUv">
@@ -1017,7 +1020,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="v3u-Ld-Gu9"/>
         <segue reference="DE9-1A-Sbe"/>
-        <segue reference="0q6-eq-x1n"/>
+        <segue reference="OAf-sp-DOu"/>
         <segue reference="J4U-MB-m02"/>
         <segue reference="zK6-B2-Hqg"/>
     </inferredMetricsTieBreakers>

@@ -18,18 +18,14 @@ class HistoryViewControler: UITableViewController {
     var friends :NSArray = []
     let currentUser = PFUser.currentUser()
     var friend = PFObject(className: "Users")
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
     
-    //var selectedTrack = NSArray =
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.view.frame)
-        //let frame = CGRect(x: 0, y: 0 , width: self.fra, height: <#T##CGFloat#>)
-        //let imageView = UIImageView(frame: <#T##CGRect#>)
-        
-        //let image = UIImage(named: "background-noglow.png")!
         let image = UIImage(named: "background-noglow.png")!
         imageView.image = image
         self.view.addSubview(imageView)
@@ -39,6 +35,7 @@ class HistoryViewControler: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        showActivityIndicatory(self.view)
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             // Get messages from server
@@ -49,9 +46,11 @@ class HistoryViewControler: UITableViewController {
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 
                 if error == nil {
-                    // The find succeeded.
+                    // The query succeededed
                     self.friends = objects!
                     self.tableView.reloadData()
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden = true
                 }
                     
                 else {
@@ -99,6 +98,25 @@ class HistoryViewControler: UITableViewController {
             let playlistvc = segue.destinationViewController as! PlaylistViewController
             playlistvc.selectedFriend = self.friend
         }
+    }
+    
+    // MARK - UI
+    func showActivityIndicatory(uiView: UIView) {
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+                                    loadingView.frame.size.height / 2);
+        actInd.hidesWhenStopped = true
+        loadingView.addSubview(actInd)
+        uiView.addSubview(loadingView)
+        actInd.startAnimating()
     }
 }
 
