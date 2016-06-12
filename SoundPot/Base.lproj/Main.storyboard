@@ -1020,10 +1020,10 @@
         <image name="settings-icon.png" width="212" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DE9-1A-Sbe"/>
-        <segue reference="eot-nR-F8J"/>
-        <segue reference="zK6-B2-Hqg"/>
+        <segue reference="8dD-e9-WFP"/>
         <segue reference="yn1-qd-brS"/>
+        <segue reference="zK6-B2-Hqg"/>
+        <segue reference="DE9-1A-Sbe"/>
         <segue reference="v3u-Ld-Gu9"/>
     </inferredMetricsTieBreakers>
 </document>
