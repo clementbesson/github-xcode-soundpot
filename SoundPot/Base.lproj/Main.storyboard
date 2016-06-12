@@ -877,7 +877,7 @@
                                     <rect key="frame" x="243" y="294" width="80" height="80"/>
                                 </variation>
                                 <connections>
-                                    <action selector="logoutButton:" destination="TtG-K7-Ko9" eventType="touchUpInside" id="8v2-ja-F4n"/>
+                                    <action selector="logoutButton:" destination="TtG-K7-Ko9" eventType="touchUpInside" id="h78-mb-WW7"/>
                                     <segue destination="2Na-4l-e5y" kind="presentation" id="yn1-qd-brS"/>
                                 </connections>
                             </button>

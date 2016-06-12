@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
         PFInstallation.currentInstallation().saveInBackground()
     }
 
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
