@@ -37,6 +37,7 @@ class SendViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        showActivityIndicatory(self.view)
         let currentUser = PFUser.currentUser()
         if (currentUser != nil){
             // Get messages from server
@@ -49,8 +50,9 @@ class SendViewController: UITableViewController {
                     // The find succeeded.
                     self.friends = objects!
                     self.tableView.reloadData()
+                    self.actInd.stopAnimating()
+                    self.loadingView.hidden = true
                 }
-                    
                 else {
                     print(error)
                 }
@@ -96,7 +98,6 @@ class SendViewController: UITableViewController {
             }
             
         }
-        print(recipients)
     }
     
     // MARK: - Export Function
@@ -113,7 +114,6 @@ class SendViewController: UITableViewController {
         message["file"] = soundFile
         message["filetype"] = "music.mp3"
         message["artwork"] = imageFile
-
         message.setObject(track, forKey: "track")
         message.setObject(artist, forKey: "artist")
         message.setObject(album, forKey: "album")
@@ -123,26 +123,13 @@ class SendViewController: UITableViewController {
         message.setObject((self.currentUser?.username)!, forKey: "userName")
         message.saveInBackgroundWithBlock { (succeded : Bool, error : NSError?) in
             if succeded {
-                /*let pushQuery = PFInstallation.query()!
-                pushQuery.whereKey("user", equalTo: self.recipients) //friend is a PFUser object
+                // Sends a notification to recipients
+                let pushQuery = PFInstallation.query()!
+                pushQuery.whereKey("userId", containedIn: self.recipients as [AnyObject])
                 let push = PFPush()
                 push.setQuery(pushQuery)
-                push.setMessage("New message from \(PFUser.currentUser()!.username!)")
-                push.sendPushInBackground()*/
-                
-                self.actInd.stopAnimating()
-                self.loadingView.hidden = true
-                self.performSegueWithIdentifier("SendToHome", sender: self)
-                
-                /*
-                let messageRecipients = message.objectForKey("recipientsIds")
-                let pushQuery: PFQuery = PFInstallation.query()!
-                pushQuery.whereKey("userId", containedIn: messageRecipients as! [AnyObject])
-                let push:PFPush = PFPush()
-                push.setQuery(pushQuery)
-                push.setMessage(String(((self.currentUser?.objectForKey("username"))! as! String) + " sent you a message"))
+                push.setMessage("New track from \(PFUser.currentUser()!.username!)!")
                 push.sendPushInBackground()
-                print("Push Sent")*/
             }
             else{
                 // show alert if not song being played
@@ -151,9 +138,13 @@ class SendViewController: UITableViewController {
                 self.performSegueWithIdentifier("SendToHome", sender: self)
             }
         }
+        self.actInd.stopAnimating()
+        self.loadingView.hidden = true
+        self.performSegueWithIdentifier("SendToHome", sender: self)
     }
     
     @IBAction func sendButton(sender: UIBarButtonItem) {
+        self.loadingView.hidden = false
         showActivityIndicatory(self.view)
         let instanceOfUploadObject: UploadLibrary = UploadLibrary()
         instanceOfUploadObject.getTrackData()

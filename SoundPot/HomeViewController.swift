@@ -71,6 +71,9 @@ class HomeViewController: UIViewController {
         showActivityIndicatory(self.view)
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
+        let currentInstallation = PFInstallation.currentInstallation()
+        print(currentUser)
+        print(currentInstallation)
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
             query.findObjectsInBackgroundWithBlock {

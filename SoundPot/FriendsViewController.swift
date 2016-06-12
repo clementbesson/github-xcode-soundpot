@@ -25,7 +25,6 @@ class FriendsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.view.frame)
         let image = UIImage(named: "background-noglow.png")!
