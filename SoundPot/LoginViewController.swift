@@ -45,9 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
-        
         let user = User(username: usernameTextField.text!, password: passwordTextField.text!, email: "")
-        
         if user?.username == "" || user?.password == "" {
             // show alert if invalid credentials
             let loginalert = UIAlertController(title: "Invalid Credentials", message: "Please enter a username and password!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -60,16 +58,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             PFUser.logInWithUsernameInBackground((user?.username)!, password: (user?.password)!) {
                 (user: PFUser?, error: NSError?) -> Void in
                 if user != nil {
-                    // Successful login
-                    print("all good")
                     var currentUser = PFUser.currentUser()
                     while currentUser == nil {
-                        // Fetch Data
                         currentUser = PFUser.currentUser()
                     }
-                    print(currentUser?.username)
+                    PFInstallation.currentInstallation().setObject((PFUser.currentUser()?.objectId)!, forKey: "userId")
+                    PFInstallation.currentInstallation().saveInBackground()
                     self.performSegueWithIdentifier("LoginToHome", sender: nil)
-                    
                 } else {
                     // The login failed. Check error to see why.
                 }

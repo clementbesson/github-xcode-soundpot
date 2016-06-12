@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
         PFInstallation.currentInstallation().removeObjectForKey("userId")
         PFInstallation.currentInstallation().saveInBackground()
     }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
