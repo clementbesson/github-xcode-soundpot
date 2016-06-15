@@ -15,8 +15,6 @@ import Bolts
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // Initialize Parse.
@@ -26,11 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
-        // calls app delegate's method: didRegisterForRemoteNotificationsWithDeviceToken and didReceiveRemoteNotification
         let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
+
+
         
         return true
     }
@@ -47,7 +47,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         // Ask Parse to display a basic alert message based on the notification content
-        PFPush.handlePush(userInfo)    }
+        PFPush.handlePush(userInfo)
+        
+        let query = PFQuery(className: "Messages")
+        let currentUser = PFUser.currentUser()
+        if (currentUser != nil) {
+            query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    // Do something with the found objects
+                    let messageCount = Message(numberOfNewMessage: objects!.count)
+                    UIApplication.sharedApplication().applicationIconBadgeNumber = (messageCount!.numberOfNewMessage)
+                } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+        }
+    }
 
     
     func applicationWillResignActive(application: UIApplication) {
@@ -146,6 +164,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

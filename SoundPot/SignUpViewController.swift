@@ -28,7 +28,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
         else{
             // if valid credentials connects to Parse
-        
             let newUser = PFUser()
             newUser.username = user?.username
             newUser.password = user?.password
@@ -52,13 +51,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Handle the text field’s user input through delegate callbacks.
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.delegate = self
         // The self refers to the ViewController class, because it’s referenced inside the scope of the LoginViewController class definition.
-        
         // LoginViewController is now a delegate for usernameTextField.
         
     }
@@ -77,16 +74,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

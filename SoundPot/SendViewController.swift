@@ -75,7 +75,6 @@ class SendViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         let message = self.friends.objectAtIndex(indexPath.row)
         let friendName = message.objectForKey("username")
-        print(friendName)
         cell.textLabel?.text = String(friendName!)
         if (indexPath.row % 2 == 0){
             cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
@@ -104,14 +103,11 @@ class SendViewController: UITableViewController {
     func sendToParse(track: NSString, artist:NSString, album:NSString, artwork:MPMediaItemArtwork, songURL:NSURL) -> Void {
         let artworkImageContent :UIImage
         artworkImageContent = artwork.imageWithSize(CGSizeMake(300, 300))!
-        
         let artworkData = NSData(data: UIImagePNGRepresentation(artworkImageContent)!)
-        let audioData = NSData(contentsOfURL: songURL)
         let imageFile = PFFile(name: "image.png", data: artworkData)
-        let soundFile = PFFile(name: "song.m4a", data: audioData!)
         let message = PFObject(className: "Messages")
+        let emptyUrl = NSURL(string: "empty")
         
-        message["file"] = soundFile
         message["filetype"] = "music.mp3"
         message["artwork"] = imageFile
         message.setObject(track, forKey: "track")
@@ -121,6 +117,13 @@ class SendViewController: UITableViewController {
         message.setObject(self.recipients, forKey: "recipientsIds2")
         message.setObject((self.currentUser?.objectId)!, forKey: "senderId")
         message.setObject((self.currentUser?.username)!, forKey: "userName")
+        
+        if (songURL != emptyUrl){
+            let audioData = NSData(contentsOfURL: songURL)
+            let soundFile = PFFile(name: "song.m4a", data: audioData!)
+            message["file"] = soundFile
+        }
+        
         message.saveInBackgroundWithBlock { (succeded : Bool, error : NSError?) in
             if succeded {
                 // Sends a notification to recipients
@@ -146,18 +149,20 @@ class SendViewController: UITableViewController {
     @IBAction func sendButton(sender: UIBarButtonItem) {
         self.loadingView.hidden = false
         showActivityIndicatory(self.view)
-        let instanceOfUploadObject: UploadLibrary = UploadLibrary()
-        instanceOfUploadObject.getTrackData()
+        let upload: UploadLibrary = UploadLibrary()
+        upload.getTrackData()
         // get song metadata
-        let artwork = instanceOfUploadObject.artwork
-        let track = instanceOfUploadObject.trackValue
-        let artist = instanceOfUploadObject.artistValue
-        let album = instanceOfUploadObject.albumValue
+        let artwork = upload.artwork
+        let track = upload.trackValue
+        let artist = upload.artistValue
+        let album = upload.albumValue
         let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) {
-            let songURL = instanceOfUploadObject.audioURL
+            var songURL = upload.audioURL
+            if (songURL == nil) {
+                songURL = NSURL(string: "empty")
+            }
             self.sendToParse(track, artist: artist, album: album, artwork: artwork, songURL: songURL)
-            
         }
     }
     

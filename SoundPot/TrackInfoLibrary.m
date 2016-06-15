@@ -17,7 +17,6 @@
         _albumValue = @"No song currently played...";
         _artistValue= @"" ;
         _trackValue= @"" ;
-        //_artwork = nil;
     }
     else {
         _trackValue=[Now valueForProperty:MPMediaItemPropertyTitle];

@@ -16,6 +16,7 @@ class InboxViewController: UITableViewController {
     // MARK: Properties
     var friendsRelation = PFRelation()
     var songs :NSArray = []
+    var songsMutable :NSMutableArray = []
     var theSong :NSArray = []
     var songId :String?! = ""
     let currentUser = PFUser.currentUser()
@@ -50,6 +51,7 @@ class InboxViewController: UITableViewController {
                     if error == nil {
                         // The find succeeded.
                         self.songs = objects!
+                        self.songsMutable = NSMutableArray(array: self.songs)
                         self.tableView.reloadData()
                         self.actInd.stopAnimating()
                         self.loadingView.hidden = true
@@ -68,14 +70,15 @@ class InboxViewController: UITableViewController {
     
     // MARK: - Table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songs.count
+        return self.songsMutable.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // add song content in table view
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        let message = self.songs.objectAtIndex(indexPath.row)
+        let message = self.songsMutable.objectAtIndex(indexPath.row)
+        
         let trackName = message.objectForKey("track")
         cell.textLabel?.text = String(trackName!)
         cell.textLabel?.textColor = UIColor.whiteColor()
@@ -88,10 +91,26 @@ class InboxViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.songsMutable.removeObjectAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.reloadData()
+            //remove user from recipients list on the back-end
+            self.song = self.songsMutable.objectAtIndex(indexPath.row) as! PFObject
+            let recipientIds = self.song.objectForKey("recipientsIds")
+            recipientIds?.removeObject(self.currentUser?.objectId)
+            self.song.setObject(recipientIds!, forKey: "recipientsIds")
+            self.song.saveInBackground()
+            
+            }
+        }
+
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Open song content if cell is clicked
-        self.songId = self.songs.objectAtIndex(indexPath.row).objectId
-        self.song = self.songs.objectAtIndex(indexPath.row) as! PFObject
+        self.songId = self.songsMutable.objectAtIndex(indexPath.row).objectId
+        self.song = self.songsMutable.objectAtIndex(indexPath.row) as! PFObject
         self.performSegueWithIdentifier("inboxToSong", sender: self)
         }
     

@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import MediaPlayer
 
+
 class SettingsViewController: UIViewController {
 
     // MARK: Properties
@@ -17,10 +18,9 @@ class SettingsViewController: UIViewController {
         PFUser.logOut()
         PFInstallation.currentInstallation().removeObjectForKey("userId")
         PFInstallation.currentInstallation().saveInBackground()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
-
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         

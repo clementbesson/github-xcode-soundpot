@@ -24,6 +24,7 @@ class SongViewController: UIViewController {
     @IBOutlet weak var artistLabel: UITextView!
     @IBOutlet weak var albumLabel: UITextView!
     @IBOutlet weak var coverView: UIImageView!
+    @IBOutlet weak var playButtonImage: UIButton!
     
     @IBAction func playButton(sender: UIButton) {
         let songData = self.selectedSong.objectForKey("file")
@@ -37,15 +38,11 @@ class SongViewController: UIViewController {
         catch{
             print("Error with Player")
         }
+        
         audioPlayer.prepareToPlay()
         audioPlayer.volume = 1.0
         audioPlayer.play()
-        
-        //remove user from recipients list on the back-end
-        let recipientIds = self.selectedSong.objectForKey("recipientsIds")
-        recipientIds?.removeObject(self.currentUser?.objectId)
-        self.selectedSong.setObject(recipientIds!, forKey: "recipientsIds")
-        self.selectedSong.saveInBackground()
+        removeUser()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,21 +50,25 @@ class SongViewController: UIViewController {
         print("start the view")
         showActivityIndicatory(self.view)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        if (self.selectedSong.objectForKey("file")==nil){
+            self.playButtonImage.hidden = true
+            removeUser()
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(true)
-    trackLabel.text = String(self.selectedSong.objectForKey("track")!)
-    artistLabel.text = String(self.selectedSong.objectForKey("artist")!)
-    albumLabel.text = String(self.selectedSong.objectForKey("album")!)
-    let imageData = self.selectedSong.objectForKey("artwork")
-    let image = imageData as! PFFile
-    let imageURL = NSURL(string: image.url!)
-    let data = NSData(contentsOfURL: imageURL!)
-    let cover = UIImage(data: data!)
-    coverView.image =  cover
-    self.actInd.stopAnimating()
-    self.loadingView.hidden = true
+        super.viewDidAppear(true)
+        trackLabel.text = String(self.selectedSong.objectForKey("track")!)
+        artistLabel.text = String(self.selectedSong.objectForKey("artist")!)
+        albumLabel.text = String(self.selectedSong.objectForKey("album")!)
+        let imageData = self.selectedSong.objectForKey("artwork")
+        let image = imageData as! PFFile
+        let imageURL = NSURL(string: image.url!)
+        let data = NSData(contentsOfURL: imageURL!)
+        let cover = UIImage(data: data!)
+        coverView.image =  cover
+        self.actInd.stopAnimating()
+        self.loadingView.hidden = true
 }
     
     // MARK - UI
@@ -87,5 +88,14 @@ class SongViewController: UIViewController {
         loadingView.addSubview(actInd)
         uiView.addSubview(loadingView)
         actInd.startAnimating()
+    }
+    
+    // MARK Parse.com
+    func removeUser() {
+        //remove user from recipients list on the back-end
+        let recipientIds = self.selectedSong.objectForKey("recipientsIds")
+        recipientIds?.removeObject(self.currentUser?.objectId)
+        self.selectedSong.setObject(recipientIds!, forKey: "recipientsIds")
+        self.selectedSong.saveInBackground()
     }
 }

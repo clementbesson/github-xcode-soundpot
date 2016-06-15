@@ -27,6 +27,7 @@
 		EBA4440B1D08CD4300384396 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440A1D08CD4300384396 /* SettingsViewController.swift */; };
 		EBA4440D1D08D79A00384396 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440C1D08D79A00384396 /* FriendsViewController.swift */; };
 		EBA4440F1D08DBF800384396 /* EditFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */; };
+		EBA714A71D0DE0C200FB6986 /* play_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EBA714A61D0DE0C200FB6986 /* play_icon.png */; };
 		EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BED11D0750D1002A4045 /* AppDelegate.swift */; };
 		EBD3BED51D0750D1002A4045 /* SoundPot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBD3BED31D0750D1002A4045 /* SoundPot.xcdatamodeld */; };
 		EBD3BEDA1D0750D1002A4045 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD3BED81D0750D1002A4045 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		EBD3BF0D1D07833F002A4045 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF0C1D07833F002A4045 /* Security.framework */; };
 		EBD3BF0F1D078348002A4045 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF0E1D078348002A4045 /* StoreKit.framework */; };
 		EBD3BF111D07836F002A4045 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD3BF101D07836F002A4045 /* SystemConfiguration.framework */; };
+		EBE268431D10E27500598B0C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE268421D10E27500598B0C /* Message.swift */; };
 		EBEBD8221D07AFBD002EB597 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEBD8201D07AFBD002EB597 /* Bolts.framework */; };
 		EBEBD8231D07AFBD002EB597 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEBD8211D07AFBD002EB597 /* Parse.framework */; };
 		EBEBD8251D07AFF3002EB597 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEBD8241D07AFF3002EB597 /* libz.tbd */; };
@@ -93,6 +95,7 @@
 		EBA4440A1D08CD4300384396 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EBA4440C1D08D79A00384396 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		EBA4440E1D08DBF800384396 /* EditFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFriendsViewController.swift; sourceTree = "<group>"; };
+		EBA714A61D0DE0C200FB6986 /* play_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_icon.png; sourceTree = "<group>"; };
 		EBD3BECC1D0750D1002A4045 /* SoundPot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundPot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD3BED01D0750D1002A4045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD3BED11D0750D1002A4045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		EBD3BF0C1D07833F002A4045 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EBD3BF0E1D078348002A4045 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EBD3BF101D07836F002A4045 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EBE268421D10E27500598B0C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EBEBD8201D07AFBD002EB597 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		EBEBD8211D07AFBD002EB597 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		EBEBD8241D07AFF3002EB597 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -166,6 +170,7 @@
 		EB127ED11D09DDC60089C8A6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EBA714A61D0DE0C200FB6986 /* play_icon.png */,
 				EB127ED41D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png */,
 				EB127ED21D09DDD80089C8A6 /* launch-image-soundpot.png */,
 				EB127ED61D09E1970089C8A6 /* background.png */,
@@ -228,6 +233,7 @@
 				EBEBD8341D088BC4002EB597 /* SongViewController.swift */,
 				EBEBD82D1D07C57D002EB597 /* Song.swift */,
 				EBD3BEF61D076D81002A4045 /* User.swift */,
+				EBE268421D10E27500598B0C /* Message.swift */,
 				EBD3BEDB1D0750D1002A4045 /* Images.xcassets */,
 				EBD3BEDD1D0750D1002A4045 /* LaunchScreen.xib */,
 				EBD3BED31D0750D1002A4045 /* SoundPot.xcdatamodeld */,
@@ -328,7 +334,7 @@
 			attributes = {
 				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Clement Besson";
 				TargetAttributes = {
 					EBD3BECB1D0750D1002A4045 = {
@@ -380,6 +386,7 @@
 				EB127ED51D09DE5A0089C8A6 /* soundpot-lauchscreen-169.png in Resources */,
 				EB3DFDA11D0A1A83006BFCAE /* logout-icon.png in Resources */,
 				EB127ED01D09DCF70089C8A6 /* launchscreen-soundpot.storyboard in Resources */,
+				EBA714A71D0DE0C200FB6986 /* play_icon.png in Resources */,
 				EB127EE11D09E4E90089C8A6 /* settings-icon.png in Resources */,
 				EB127EE01D09E4E90089C8A6 /* send-icon.png in Resources */,
 				EBD3BEDC1D0750D1002A4045 /* Images.xcassets in Resources */,
@@ -411,6 +418,7 @@
 				EBD3BEF51D075624002A4045 /* LoginViewController.swift in Sources */,
 				EBEBD8311D07D5A1002EB597 /* InboxViewController.swift in Sources */,
 				EB3DFDA71D0A27C8006BFCAE /* SignUpViewController.swift in Sources */,
+				EBE268431D10E27500598B0C /* Message.swift in Sources */,
 				EBD3BED21D0750D1002A4045 /* AppDelegate.swift in Sources */,
 				EBD3BEF71D076D81002A4045 /* User.swift in Sources */,
 				EBEBD8371D089204002EB597 /* HistoryViewControler.swift in Sources */,
@@ -486,6 +494,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -604,6 +613,7 @@
 				);
 				INFOPLIST_FILE = SoundPotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "clementbesson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -622,6 +632,7 @@
 				);
 				INFOPLIST_FILE = SoundPotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "clementbesson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoundPot.app/SoundPot";

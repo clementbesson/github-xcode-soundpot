@@ -328,18 +328,6 @@
                                     <rect key="frame" x="0.0" y="542" width="380" height="37"/>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-AH-wS6">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="175" y="597" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="playButton:" destination="krS-7z-cXP" eventType="touchUpInside" id="ITX-7L-Nbg"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bAk-ey-kO6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -350,6 +338,18 @@
                                     <rect key="frame" x="0.0" y="503" width="380" height="37"/>
                                 </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-AH-wS6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Play" image="play_icon.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="131" y="566" width="130" height="97"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playButton:" destination="krS-7z-cXP" eventType="touchUpInside" id="ITX-7L-Nbg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -359,8 +359,8 @@
                                 <exclude reference="ayY-io-cNn"/>
                                 <exclude reference="WbB-lh-1Ko"/>
                                 <exclude reference="0uD-Th-Cox"/>
-                                <exclude reference="m3U-AH-wS6"/>
                                 <exclude reference="bAk-ey-kO6"/>
+                                <exclude reference="m3U-AH-wS6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -370,8 +370,8 @@
                                 <include reference="ayY-io-cNn"/>
                                 <include reference="WbB-lh-1Ko"/>
                                 <include reference="0uD-Th-Cox"/>
-                                <include reference="m3U-AH-wS6"/>
                                 <include reference="bAk-ey-kO6"/>
+                                <include reference="m3U-AH-wS6"/>
                             </mask>
                         </variation>
                     </view>
@@ -379,6 +379,7 @@
                         <outlet property="albumLabel" destination="0uD-Th-Cox" id="3pw-8K-TJJ"/>
                         <outlet property="artistLabel" destination="bAk-ey-kO6" id="JZi-9Q-uM6"/>
                         <outlet property="coverView" destination="ayY-io-cNn" id="NkX-qI-bYW"/>
+                        <outlet property="playButtonImage" destination="m3U-AH-wS6" id="8T0-Xx-Q6V"/>
                         <outlet property="trackLabel" destination="WbB-lh-1Ko" id="pQi-pV-LL5"/>
                     </connections>
                 </viewController>
@@ -622,7 +623,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-Bi-nUq">
                                 <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                 </variation>
@@ -633,7 +634,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-W9-CX9">
                                 <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="64" y="352" width="247" height="30"/>
                                 </variation>
@@ -1015,14 +1016,15 @@
         <image name="logo-soundpot-2.png" width="129" height="126"/>
         <image name="logout-icon.png" width="120" height="120"/>
         <image name="new-message-icon.png" width="110" height="110"/>
+        <image name="play_icon.png" width="472" height="360"/>
         <image name="playlist-icon.png" width="212" height="212"/>
         <image name="send-icon.png" width="212" height="212"/>
         <image name="settings-icon.png" width="212" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8dD-e9-WFP"/>
-        <segue reference="yn1-qd-brS"/>
+        <segue reference="eot-nR-F8J"/>
         <segue reference="zK6-B2-Hqg"/>
+        <segue reference="yn1-qd-brS"/>
         <segue reference="DE9-1A-Sbe"/>
         <segue reference="v3u-Ld-Gu9"/>
     </inferredMetricsTieBreakers>

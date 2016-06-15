@@ -23,10 +23,5 @@ class Song {
         self.artist = artist
         self.album = album
         self.artworkImage = artworkImage
-        
-        // Initialization should fail if there is no username nor password
-        //if (self.artworkImage.isEmpty) {
-        //    return nil
-        //}
     }
 }

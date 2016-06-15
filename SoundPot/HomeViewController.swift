@@ -12,7 +12,7 @@ import MediaPlayer
 
 
 
-var timer: NSTimer!
+
 
 class HomeViewController: UIViewController {
     
@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     var loadingView: UIView = UIView()
     var logoView: UIView = UIView()
     var logoImage: UIImageView = UIImageView()
-    //var backgroundThread: NSThread = NSThread()
+    var timer: NSTimer!
     
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
@@ -51,8 +51,6 @@ class HomeViewController: UIViewController {
             loginalert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(loginalert, animated: true, completion: nil)
         }
-        
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,34 +66,34 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        updateNowPlayingInfo()
         showActivityIndicatory(self.view)
+        getParseData()
+    }
+    
+    func getParseData() {
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
-        let currentInstallation = PFInstallation.currentInstallation()
-        print(currentUser)
-        print(currentInstallation)
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
-                
                 if error == nil {
                     // Do something with the found objects
-                    self.inbox.text = String( objects!.count)
-                    
-                    timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
-                    self.updateNowPlayingInfo()
+                    self.inbox.text = String(objects!.count)
+                    if self.timer == nil{
+                        self.timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
+                    }
                     self.actInd.stopAnimating()
                     self.loadingView.hidden = true
-                    
                 } else {
                     // Log details of the failure
                     print("Error: \(error!) \(error!.userInfo)")
                 }
             }
         }
-        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -116,22 +114,22 @@ class HomeViewController: UIViewController {
     // Gets iOS device player information
     func updateNowPlayingInfo(){
         // if somthing is being played
-        let instanceOfTrackObject: TrackingInfoLibrary = TrackingInfoLibrary()
-        instanceOfTrackObject.getNowPlayingInfo()
+        let music: TrackingInfoLibrary = TrackingInfoLibrary()
+        music.getNowPlayingInfo()
+        self.artworkImage.image = nil
+        self.track.text = music.trackValue
+        self.artist.text = music.artistValue
+        self.album.text = music.albumValue
         
-        self.track.text = instanceOfTrackObject.trackValue
-        self.artist.text = instanceOfTrackObject.artistValue
-        self.album.text = instanceOfTrackObject.albumValue
-        
-        if (instanceOfTrackObject.albumValue != "No song currently played..."){
-            var artworkImageContent :UIImage
-            artworkImageContent = instanceOfTrackObject.artwork.imageWithSize(CGSizeMake(300, 300))!
+        if (music.albumValue != "No song currently played..."){
+            let music: TrackingInfoLibrary = TrackingInfoLibrary()
+            music.getNowPlayingInfo()
+            let artworkImageContent :UIImage?
+            artworkImageContent = music.artwork.imageWithSize(CGSizeMake(300, 300))!
             self.artworkImage.image = artworkImageContent
             self.logoImage.hidden = true
-            //backgroundThread.cancel()
         }
         else {
-            self.artworkImage.image = nil
             showLogo(self.logoImage)
         }
     }
@@ -143,11 +141,9 @@ class HomeViewController: UIViewController {
         loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
-        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0)
         actInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.WhiteLarge
-        
-        //actInd.center  = artworkImage.center
         actInd.center = CGPointMake(loadingView.frame.size.width / 2,
                                     loadingView.frame.size.height / 2);
         actInd.hidesWhenStopped = true
@@ -157,26 +153,11 @@ class HomeViewController: UIViewController {
     }
     
     func showLogo(uiView: UIView) {
-        
-        //uiView.addSubview(logoImage)
         uiView.hidden = false
-        // starts new thread for UI effect
-        //backgroundThread = NSThread(target: self, selector: #selector(changeAlpha), object: self.logoImage)
-        //backgroundThread.start()
     }
     
-    /*func changeAlpha(uiImage: UIImageView) {
-     var increment:CGFloat = 0.1
-     while uiImage.hidden == false {
-     if uiImage.alpha == 1 {
-     increment = 0.1
-     }
-     else {
-     increment = -0.1
-     }
-     uiImage.alpha = uiImage.alpha + increment
-     }
-     }*/
+    // MARK - Notification
+
     
 }
 
