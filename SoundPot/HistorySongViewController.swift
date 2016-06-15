@@ -23,10 +23,6 @@ class HistorySongViewController: UIViewController {
         trackLabel.text = String(self.selectedSong.objectForKey("track")!)
         artistLabel.text = String(self.selectedSong.objectForKey("artist")!)
         albumLabel.text = String(self.selectedSong.objectForKey("album")!)
-        //let imageFile = selectedSong.objectForKey("artwork")
-        //let imageUrl = NSURL(string: imageFile.url)
-        //let image = UIImage()
-        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)

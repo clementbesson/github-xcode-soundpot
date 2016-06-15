@@ -27,19 +27,25 @@ class HomeViewController: UIViewController {
     var logoView: UIView = UIView()
     var logoImage: UIImageView = UIImageView()
     var timer: NSTimer!
+    var animationTimer: NSTimer!
+    var growingAlpha: Bool = false
     
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
+        animationTimer.invalidate()
     }
     
     @IBAction func historyButton(sender: UIButton) {
         timer.invalidate()
+        animationTimer.invalidate()
     }
     @IBAction func settingsButton(sender: UIButton) {
         timer.invalidate()
+        animationTimer.invalidate()
     }
     @IBAction func sendButton(sender: AnyObject) {
         timer.invalidate()
+        animationTimer.invalidate()
         let instanceOfTrackObject: TrackingInfoLibrary = TrackingInfoLibrary()
         instanceOfTrackObject.getNowPlayingInfo()
         if (instanceOfTrackObject.albumValue != "No song currently played..."){
@@ -55,13 +61,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logoImage.frame = CGRectMake(0, 0, 120, 120)
-        logoImage.center = self.view.center
+        logoImage.center = self.artworkImage.center
+        logoImage.center.x = self.view.center.x
         logoImage.image = UIImage(named: "logo-soundpot-2.png")
         logoImage.backgroundColor = UIColor.blackColor()
         logoImage.clipsToBounds = true
         logoImage.layer.cornerRadius = 10
-        logoImage.hidden = true
         self.view.addSubview(logoImage)
+        logoImage.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,6 +82,7 @@ class HomeViewController: UIViewController {
     func getParseData() {
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
+        logoImage.hidden = true
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
             query.findObjectsInBackgroundWithBlock {
@@ -88,6 +96,7 @@ class HomeViewController: UIViewController {
                     }
                     self.actInd.stopAnimating()
                     self.loadingView.hidden = true
+                    self.logoImage.hidden = false
                 } else {
                     // Log details of the failure
                     print("Error: \(error!) \(error!.userInfo)")
@@ -140,7 +149,8 @@ class HomeViewController: UIViewController {
     // MARK - UI
     func showActivityIndicatory(uiView: UIView) {
         loadingView.frame = CGRectMake(0, 0, 80, 80)
-        loadingView.center = self.view.center
+        loadingView.center = self.artworkImage.center
+        loadingView.center.x = self.view.center.x
         loadingView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
@@ -157,10 +167,31 @@ class HomeViewController: UIViewController {
     
     func showLogo(uiView: UIView) {
         uiView.hidden = false
+        if self.animationTimer == nil{
+            self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(0.07, target: self, selector: #selector(self.changeAlpha), userInfo: nil, repeats: true)
+        }
+    }
+    
+    func changeAlpha() {
+        let uiImage = self.logoImage
+        var increment:CGFloat = 0.1
+        if uiImage.alpha >= 1 {
+            growingAlpha = false
+        }
+        else if uiImage.alpha <= 0{
+            growingAlpha = true
+        }
+            
+        if growingAlpha {
+            increment = 0.1
+        }
+        else {
+            increment = -0.1
+        }
+        uiImage.alpha = uiImage.alpha + increment
     }
     
     // MARK - Notification
-
     
 }
 
