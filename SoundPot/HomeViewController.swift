@@ -32,20 +32,20 @@ class HomeViewController: UIViewController {
     
     @IBAction func inboxButton(sender: UIButton) {
         timer.invalidate()
-        animationTimer.invalidate()
+        stopTimer()
     }
     
     @IBAction func historyButton(sender: UIButton) {
         timer.invalidate()
-        animationTimer.invalidate()
+        stopTimer()
     }
     @IBAction func settingsButton(sender: UIButton) {
         timer.invalidate()
-        animationTimer.invalidate()
+        stopTimer()
     }
     @IBAction func sendButton(sender: AnyObject) {
         timer.invalidate()
-        animationTimer.invalidate()
+        stopTimer()
         let instanceOfTrackObject: TrackingInfoLibrary = TrackingInfoLibrary()
         instanceOfTrackObject.getNowPlayingInfo()
         if (instanceOfTrackObject.albumValue != "No song currently played..."){
@@ -68,15 +68,14 @@ class HomeViewController: UIViewController {
         logoImage.clipsToBounds = true
         logoImage.layer.cornerRadius = 10
         self.view.addSubview(logoImage)
-        logoImage.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        logoImage.hidden = true
         updateNowPlayingInfo()
         showActivityIndicatory(self.view)
         getParseData()
-        
     }
     
     func getParseData() {
@@ -113,6 +112,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        logoImage.hidden = true
         // check is user is cached and goes to the login page otherwise
         let currentUser = PFUser.currentUser()
         if (currentUser == nil) {
@@ -191,7 +191,10 @@ class HomeViewController: UIViewController {
         uiImage.alpha = uiImage.alpha + increment
     }
     
-    // MARK - Notification
+    // MARK - Timer
+    func stopTimer(){
+        if (self.animationTimer != nil){animationTimer.invalidate()}
+    }
     
 }
 
