@@ -19,7 +19,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-noglow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ePM-w1-dld">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-6" y="-39" width="406" height="715"/>
+                                    <rect key="frame" x="0.0" y="-39" width="400" height="715"/>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-soundpot-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="4en-iE-M3g">
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="375"/>
+            <point key="canvasLocation" x="51" y="375"/>
         </scene>
     </scenes>
     <resources>

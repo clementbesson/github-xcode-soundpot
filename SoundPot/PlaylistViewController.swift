@@ -14,10 +14,12 @@ class PlaylistViewController: UITableViewController {
     
     // MARK: Properties
     var messages = NSArray()
+    var messagesMutable = NSMutableArray()
     var selectedFriend = PFObject(className: "Users")
     var song = PFObject(className: "Messages")
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     var loadingView: UIView = UIView()
+    let currentUser = PFUser.currentUser()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -32,6 +34,7 @@ class PlaylistViewController: UITableViewController {
                 if error == nil {
                     // Query succeeded
                     self.messages = objects!
+                    self.messagesMutable = NSMutableArray(array: self.messages)
                     self.tableView.reloadData()
                     self.actInd.stopAnimating()
                     self.loadingView.hidden = true
@@ -48,6 +51,7 @@ class PlaylistViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         showActivityIndicatory(self.view)
+        self.tableView.delegate = self
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let imageView = UIImageView(frame: self.tableView.frame)
@@ -59,14 +63,14 @@ class PlaylistViewController: UITableViewController {
     
     // MARK: - Table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.messages.count
+        return self.messagesMutable.count
         
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        let message = self.messages.objectAtIndex(indexPath.row)
+        let message = self.messagesMutable.objectAtIndex(indexPath.row)
         let songName = message.objectForKey("track")
         cell.textLabel?.text = String(songName!)
         if (indexPath.row % 2 == 0){
@@ -78,9 +82,27 @@ class PlaylistViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.messagesMutable.removeObjectAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.reloadData()
+            //remove user from recipients list on the back-end
+            self.song = self.messagesMutable.objectAtIndex(indexPath.row) as! PFObject
+            let recipientIds = self.song.objectForKey("recipientsIds2")
+            if recipientIds!.count == 1 {
+                self.song.deleteInBackground()
+            }
+            else {
+                recipientIds?.removeObject(self.currentUser?.objectId)
+                self.song.setObject(recipientIds!, forKey: "recipientsIds2")
+                self.song.saveInBackground()
+            }
+        }
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.song = self.messages.objectAtIndex(indexPath.row) as! PFObject
+        self.song = self.messagesMutable.objectAtIndex(indexPath.row) as! PFObject
         self.performSegueWithIdentifier("PlaylistToSong", sender: self)
     }
     

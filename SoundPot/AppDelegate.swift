@@ -48,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         // Ask Parse to display a basic alert message based on the notification content
         PFPush.handlePush(userInfo)
-        
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
         if (currentUser != nil) {
@@ -84,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {

@@ -8,7 +8,7 @@
 
 import Parse
 
-struct Message {
+class Message {
     var numberOfNewMessage: Int
     // MARK: Initialization
     init?(numberOfNewMessage: Int) {

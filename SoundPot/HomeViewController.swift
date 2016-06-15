@@ -69,6 +69,7 @@ class HomeViewController: UIViewController {
         updateNowPlayingInfo()
         showActivityIndicatory(self.view)
         getParseData()
+        
     }
     
     func getParseData() {
@@ -81,6 +82,7 @@ class HomeViewController: UIViewController {
                 if error == nil {
                     // Do something with the found objects
                     self.inbox.text = String(objects!.count)
+                    UIApplication.sharedApplication().applicationIconBadgeNumber = (objects?.count)!
                     if self.timer == nil{
                         self.timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateNowPlayingInfo), userInfo: nil, repeats: true)
                     }
@@ -109,6 +111,7 @@ class HomeViewController: UIViewController {
             let vc = storyboard.instantiateViewControllerWithIdentifier("login")
             self.presentViewController(vc, animated: false, completion: nil)
         }
+ 
     }
     
     // Gets iOS device player information

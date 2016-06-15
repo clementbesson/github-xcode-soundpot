@@ -17,14 +17,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Handle the text field’s user input through delegate callbacks.
         usernameTextField.delegate = self
         passwordTextField.delegate = self
-        // The self refers to the ViewController class, because it’s referenced inside the scope of the LoginViewController class definition.
-        
-        // LoginViewController is now a delegate for usernameTextField.
-
+        passwordTextField.secureTextEntry = true
     }
 
     override func didReceiveMemoryWarning() {
