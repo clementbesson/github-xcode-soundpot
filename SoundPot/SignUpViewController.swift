@@ -39,24 +39,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     loginalert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 }
                 else {
-                    PFInstallation.currentInstallation().setObject(newUser.objectId!, forKey: "userId")
+                    
+                    PFUser.logInWithUsernameInBackground((newUser.username)!, password: (newUser.password)!) {
+                        (user: PFUser?, error: NSError?) -> Void in
+                        if user != nil {
+                            var currentUser = PFUser.currentUser()
+                            while currentUser == nil {
+                                currentUser = PFUser.currentUser()
+                            }
+                    PFInstallation.currentInstallation().setObject((PFUser.currentUser()?.objectId)!, forKey: "userId")
                     PFInstallation.currentInstallation().saveInBackground()
                     self.performSegueWithIdentifier("SignupToHome", sender: self)
+                        }
+                    }
                 }
             })
-            
         }
-    
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Handle the text field’s user input through delegate callbacks.
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.delegate = self
-        // The self refers to the ViewController class, because it’s referenced inside the scope of the LoginViewController class definition.
-        // LoginViewController is now a delegate for usernameTextField.
         
     }
     

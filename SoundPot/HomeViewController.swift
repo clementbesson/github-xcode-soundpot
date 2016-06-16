@@ -82,6 +82,7 @@ class HomeViewController: UIViewController {
     func getParseData() {
         let query = PFQuery(className: "Messages")
         let currentUser = PFUser.currentUser()
+        print(currentUser)
         logoImage.hidden = true
         if (currentUser != nil) {
             query.whereKey("recipientsIds", equalTo:(currentUser?.objectId)!)
