@@ -54,10 +54,6 @@ class SongViewController: UIViewController {
             self.playButtonImage.hidden = true
             removeUser()
         }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
         trackLabel.text = String(self.selectedSong.objectForKey("track")!)
         artistLabel.text = String(self.selectedSong.objectForKey("artist")!)
         albumLabel.text = String(self.selectedSong.objectForKey("album")!)
@@ -69,6 +65,11 @@ class SongViewController: UIViewController {
         coverView.image =  cover
         self.actInd.stopAnimating()
         self.loadingView.hidden = true
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+
 }
     
     // MARK - UI

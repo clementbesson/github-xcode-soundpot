@@ -68,11 +68,12 @@ class HomeViewController: UIViewController {
         logoImage.clipsToBounds = true
         logoImage.layer.cornerRadius = 10
         self.view.addSubview(logoImage)
+        logoImage.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        logoImage.hidden = true
+        self.logoImage.hidden = true
         updateNowPlayingInfo()
         showActivityIndicatory(self.view)
         getParseData()
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController {
                     }
                     self.actInd.stopAnimating()
                     self.loadingView.hidden = true
-                    self.logoImage.hidden = false
+                    // self.logoImage.hidden = false
                 } else {
                     // Log details of the failure
                     print("Error: \(error!) \(error!.userInfo)")
@@ -112,7 +113,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        logoImage.hidden = true
         // check is user is cached and goes to the login page otherwise
         let currentUser = PFUser.currentUser()
         if (currentUser == nil) {
